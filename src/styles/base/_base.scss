@@ -1,0 +1,50 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 62.5%;
+
+  @media (max-width: 400px) {
+    font-size: 50%;
+  }
+
+  @media (max-width: 300px) {
+    font-size: 40%;
+  }
+
+  @media (max-width: 200px) {
+    font-size: 30%;
+  }
+}
+
+body {
+  color: #111;
+  font-family: 'Lato', sans-serif;
+  font-size: $m-size;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+button {
+  cursor: pointer;
+}
+
+button:disabled {
+  cursor: default;
+}
+
+.is-active {
+  font-weight: bold;
+}
+
+.threshold-transition {
+  width: 100%;
+  min-height: 3rem;
+  background: url('/images/threshold.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  box-shadow: 0 .5rem .5rem 1rem rgba(0, 0, 0, .35);
+}

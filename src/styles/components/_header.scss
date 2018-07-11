@@ -1,0 +1,47 @@
+.header {
+  //background: $dark-blue;
+  padding-top: 1rem;
+}
+
+.header__tape {
+  width: 80%;
+  margin-top: -2.5rem;
+  
+  &--top-left {
+    animation: moveInTopLeft 3s ease-out;
+  }
+
+  &--middle {
+    animation: moveInTop 3s ease-out;
+  }
+
+  &--top-right {
+    animation: moveInTopRight 3s ease-out;
+  }
+}
+
+.header__content {
+  font-family: 'Indie Flower', cursive;
+  align-items: center;
+  display: flex;
+  justify-content: space-around;
+  padding: $s-size 0;
+}
+
+.header__title {
+  width: 8rem;
+  height: 9rem;
+  background: url('/images/notebook-page-transparent-small.jpg');
+  background-size: cover;
+  border-radius: 5px;
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0;
+  animation: fadeIn 1.5s ease-in;
+
+  h3 {
+    margin: 0 auto;
+  }
+}
