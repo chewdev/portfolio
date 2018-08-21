@@ -1,159 +1,234 @@
 .about-me-layout {
-    background: url('/images/bg3.jpg');
-    background-repeat: no-repeat;
-    background-size: cover;
-    height: 100vh;
-    min-height: 120rem;
-    width: 100vw;
-    max-width: 100vw;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-around;
+  // background: url('/images/bg3.jpg');
+  // background-repeat: no-repeat;
+  // background-size: cover;
+  background: #aaaaaa;
+  height: 100vh;
+  min-height: 120rem;
+  width: 100%;
+  max-width: 100vw;
+  min-width: 260px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
 
-    @media (min-width: 800px) {
-        flex-direction: row;
-        justify-content: space-between;
-        min-height: 60rem;
-    }
+  @media (min-width: 800px) {
+    background: repeating-linear-gradient(
+      #aaaaaa,
+      #a0a0a0 24.5%,
+      #666666 24.75%,
+      #555555 25%
+    );
+    flex-direction: row;
+    justify-content: space-between;
+    min-height: 60rem;
+  }
 }
-
 .about-me-resize-container {
-    @media (min-width: 1040px) {
-        background: url('/images/grass.jpg');
-        background-repeat: no-repeat;
-        background-size: cover;
-        width: 40%;
-        height: 100%;
-        padding: 0 $s-size;
-    }
-    padding: $m-size $s-size;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  @media (min-width: 1040px) {
+    background: url("/images/grass.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 40%;
+    height: 100%;
+    padding: 0 $s-size;
+  }
+  padding: $m-size $s-size;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-
 .about-me-container {
-    background: url('/images/flowers.jpg');
-    background-repeat: no-repeat;
-    background-size: cover;
-    border: 1.5rem solid #370000;
-    border-radius: 2rem;
+  // background: url('/images/flowers.jpg');
+  // background-repeat: no-repeat;
+  // background-size: cover;
+  background: #002f6c;
+  background: #44aacc;
+  background: #1572b6;
+  border: 1.5rem solid #666666;
+  border-radius: 2rem;
+  color: #fff;
+  width: 35rem;
+  height: 50rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  // box-shadow: .1rem -.2rem .5rem .3rem rgba(0, 0, 0, 0.25);
+  box-shadow: 1.5rem -2.5rem 1rem 0.5rem rgba(0, 0, 0, 0.3);
+  h2 {
+    opacity: 0.9;
+    padding: $m-size;
+    text-align: center;
+    font-size: 3.4rem;
+    font-weight: 400;
+    line-height: 1.2;
+    color: #ffff55;
     color: #fff;
-    width: 35rem;
-    height: 50rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    box-shadow: .1rem -.2rem .5rem .3rem rgba(0, 0, 0, 0.25);
-
-    h2 {
-        opacity: .9;
-        padding: $m-size;
-        text-align: center;
-        font-size: 3.4rem;
-        font-weight: 400;
-        line-height: 1.2;
-
-    }
-
-    p {
-        opacity: .9;
-        padding: $s-size;
-        font-size: 1.8rem;
-        font-weight: 400;
-        line-height: 1.2;
-        letter-spacing: .2rem;
-    }
+    border-bottom: 1px solid white;
+    margin-bottom: $s-size;
+  }
+  p {
+    opacity: 0.9;
+    padding: $s-size $m-size;
+    font-size: 1.6rem;
+    font-weight: 400;
+    line-height: 1.2;
+    letter-spacing: 0.1rem;
+    color: #ffff55;
+    color: #fff;
+  }
 }
-
-
+.about-me-quote {
+  text-align: center;
+  & em {
+    font-size: 1.25em;
+  }
+}
 .about-me__table-container {
-    background: url('/images/table.jpg');
-    background-repeat: no-repeat;
-    background-size: cover;
-    border-radius: 4rem;
-    color: #fff;
-    width: 35rem;
-    height: 30rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-around;
-    box-shadow: 1.5rem -2.5rem 1rem .5rem rgba(0, 0, 0, 0.3);
-
-    h2 {
-        opacity: .9;
-        text-align: center;
-        font-size: $l-size;
-        font-weight: 400;
-        line-height: 1.2;
-    }
-
-    p {
-        padding: 0 $m-size;
-        opacity: .9;
-        font-size: $m-size;
-        font-weight: 400;
-        line-height: 1.2;
-        letter-spacing: .2rem;
-    }
-
-    span {
-        padding: 0 $m-size;
-        opacity: .9;
-        font-size: 2rem;
-        font-weight: 400;
-        letter-spacing: .25rem;
-        line-height: 1.3;
-        text-align: center;
-    }
+  background: url("/images/table.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  border-radius: 4rem;
+  color: #ffff55;
+  color: #fff;
+  width: 35rem;
+  height: 30rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  box-shadow: 1.5rem -2.5rem 1rem 0.5rem rgba(0, 0, 0, 0.3);
+  h2 {
+    opacity: 0.9;
+    text-align: center;
+    font-size: $l-size;
+    padding: $m-size;
+    font-weight: 400;
+    line-height: 1.2;
+    border-bottom: 1px solid white;
+    margin-bottom: -2.5rem;
+  }
+  p {
+    padding: 0 $m-size;
+    opacity: 0.9;
+    font-size: 1.6rem;
+    font-weight: 400;
+    line-height: 1.2;
+    letter-spacing: 0.2rem;
+  }
+  span {
+    padding: 0 $m-size;
+    opacity: 0.9;
+    font-size: 2rem;
+    font-weight: 400;
+    letter-spacing: 0.25rem;
+    line-height: 1.3;
+    text-align: center;
+  }
 }
-
 .about-me__chair-table-container {
-
-    @media (min-width: 1040px) {
-        background: url('/images/grass.jpg');
-        height: 100%;
-        width: 40%;
-    }
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}
-
-.about-me__chairs-container {
-    height: 14rem;
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    width: 35rem;
-}
-
-.about-me__chair-container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    height: 50%;
-}
-
-.about-me__chair {
-    background: url('/images/top-chair.jpg');
+  @media (min-width: 1040px) {
+    background: url("/images/grass.jpg");
     background-repeat: no-repeat;
     background-size: cover;
-    width: 10rem;
-    height: 10rem;
-    box-shadow: .6rem -.7rem .3rem .2rem rgba(0, 0, 0, 0.3);
-
-    &--right {
-        background: url('/images/bottom-chair.jpg');
-        background-repeat: no-repeat;
-        background-size: cover;
-        width: 10rem;
-        height: 10rem;
-        box-shadow: .6rem -.7rem .3rem .2rem rgba(0, 0, 0, 0.3);
-     }
+    height: 100%;
+    width: 40%;
+  }
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
+.about-me__chairs-container {
+  height: 10rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  width: 35rem;
+}
+.about-me__chair-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 50%;
+}
+.about-me__chair {
+  background: url("/images/top-chair.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 8rem;
+  height: 8rem;
+  box-shadow: 0.6rem -0.7rem 0.3rem 0.2rem rgba(0, 0, 0, 0.3);
+  &--right {
+    background: url("/images/bottom-chair.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 8rem;
+    height: 8rem;
+    box-shadow: 0.6rem -0.7rem 0.3rem 0.2rem rgba(0, 0, 0, 0.3);
+  }
+}
+.table-container {
+  font-size: 3px;
+  box-sizing: content-box;
+  @media (max-width: 300px) {
+    font-size: 2px;
+  }
+}
+.tablet {
+  box-sizing: content-box;
+  position: relative;
+  width: 51.2em;
+  height: 68.2667em;
+  margin: auto;
+  border: 1em black solid;
+  border-top-width: 4em;
+  border-bottom-width: 4em;
+  border-radius: 2.4em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transform: rotate(90deg);
+}
+/* The horizontal line on the top of the device */
+.tablet:before {
+  content: "";
+  display: block;
+  width: 4em;
+  height: 0.3333em;
+  position: absolute;
+  top: -2em;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #333;
+  border-radius: 0.666667em;
+}
+/* The circle on the bottom of the device */
+.tablet:after {
+  content: "";
+  display: block;
+  width: 2.3333em;
+  height: 2.3333em;
+  position: absolute;
+  left: 50%;
+  bottom: -4.3333em;
+  transform: translate(-50%, -50%);
+  background: #333;
+  border-radius: 50%;
+}
+.tablet-content {
+  width: 68.2667em;
+  height: 41em;
+  border: none;
+  transform: rotate(-90deg);
+}
+/* The screen (or content) of the device */
+// .tablet .content {
+// width: 51.2em;
+// height: 68.2667em;
+// background: white;
+// margin: -0.066667em;
+// }

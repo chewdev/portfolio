@@ -1,132 +1,170 @@
 .paper-box {
-    font-family: 'Indie Flower', cursive;
-    width: 28rem;
-    height: 40rem;
-    background: url('/images/notebook-page-transparent.jpg');
-    background-size: cover;
-    border-radius: 5px;
-    animation: fadeIn 2s ease-out;
-    align-self: center;
+  font-family: "Indie Flower", cursive;
+  width: 35rem;
+  height: 60rem;
+  background: url("/images/notebook-page-transparent.jpg");
+  background-size: cover;
+  border-radius: 5px;
+  animation: fadeIn 1s ease-out;
+  align-self: center;
+  position: relative;
 }
 
 .paper-tape {
-    margin: -4rem -2rem 0 -2rem;
-    display: flex;
-    justify-content: space-between;
+  margin: -4rem -2rem 0 -2rem;
+  display: flex;
+  justify-content: space-between;
 
-    &--left {
-        width: 7rem;
-        height: 7rem;
-        animation: moveInTopLeft 3s ease-out;
-    }
+  &--left {
+    width: 7rem;
+    height: 7rem;
+    animation: moveInTopLeft 2s ease-out;
+  }
 
-    &--right {
-        width: 7rem;
-        height: 7rem;
-        animation: moveInTopRight 3s ease-out;
-    }
+  &--right {
+    width: 7rem;
+    height: 7rem;
+    animation: moveInTopRight 2s ease-out;
+  }
 }
 
 .paper-header {
-    margin: -1.5rem 0 0 7rem;
-    line-height: 1;
+  margin: 0.5rem 0 0.5rem 10rem;
+  line-height: 1;
 }
 
 .paper-text {
-    margin: 1rem .5rem 0 4.5rem;
-    font-size: 2.2rem;
-    line-height: 1.05;
+  padding-top: 0.5rem;
+  margin: 0.5rem 0.5rem 0 6.5rem;
+  font-size: 2rem;
+  line-height: 0.88;
 
-    &--chrome {
-        line-height: 1.07;
-    }
+  &--chrome {
+    line-height: 0.9;
+  }
+}
+
+.paper-contact-link-div {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  bottom: 0.2rem;
+}
+
+.paper-contact-link {
+  text-decoration: none;
+  font-size: 2rem;
+  transition: transform 0.7s linear;
+
+  &:hover {
+    cursor: pointer;
+    animation: blink 0.7s linear infinite;
+  }
+}
+
+@keyframes blink {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.5);
+  }
+  100% {
+    transform: scale(1);
+  }
 }
 
 @keyframes moveInTopLeft {
-    0% {
-        opacity: 0;
-        transform: translate(-100%, -100%) rotate(45deg);
-    }
+  0% {
+    opacity: 0;
+    transform: translate(-100%, -100%) rotate(90deg);
+  }
 
-    50% {
-        opacity: 0;
-    }
+  50% {
+    opacity: 0;
+  }
 
-    100% {
-        opacity: 1;
-        transform: translate(0);
-    }
+  100% {
+    opacity: 1;
+    transform: translate(0);
+  }
 }
 
 @keyframes moveInTopRight {
-    0% {
-        opacity: 0;
-        transform: translate(100%, -100%) rotate(-45deg);
-    }
+  0% {
+    opacity: 0;
+    transform: translate(100%, -100%) rotate(-90deg);
+  }
 
-    50% {
-        opacity: 0;
-    }
+  50% {
+    opacity: 0;
+  }
 
-    100% {
-        opacity: 1;
-        transform: translate(0);
-    }
+  100% {
+    opacity: 1;
+    transform: translate(0);
+  }
 }
 
 @keyframes moveInTop {
-    0% {
-        opacity: 0;
-        transform: translateY(-100%);
-    }
+  0% {
+    opacity: 0;
+    transform: translateY(-100%);
+  }
 
-    50% {
-        opacity: 0;
-    }
+  50% {
+    opacity: 0;
+  }
 
-    100% {
-        opacity: 1;
-        transform: translate(0);
-    }
+  100% {
+    opacity: 1;
+    transform: translate(0);
+  }
 }
 
 @keyframes fadeIn {
-    0% {
-        transform: translateY(-100%);
-        opacity: 0;
-    }
+  0% {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
 
-    100% {
-        transform: translate(0);
-        opacity: 1;
-    }
+  100% {
+    transform: translate(0);
+    opacity: 1;
+  }
 }
 
 @keyframes fadeInBottom {
-    0% {
-        transform: translateY(50%);
-        opacity: 0;
-    }
+  0% {
+    transform: translateY(50%);
+    opacity: 0;
+  }
 
-    100% {
-        transform: translate(0);
-        opacity: 1;
-    }
+  100% {
+    transform: translate(0);
+    opacity: 1;
+  }
 }
 
+@keyframes fadeInLeft {
+  0% {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
 
-// .paper-opacity {
-//     position: relative;
-//     z-index: 1;
-// }
+  100% {
+    transform: translate(0);
+    opacity: 1;
+  }
+}
 
-// .paper-opacity:before {
-//   position: absolute;
-//   top: 0; 
-//   left: 0;
-//   width: 100%; 
-//   height: 100px;  
-//   opacity: .5; 
-//   z-index: -1;
-//   background: url('/images/notebook-page.jpg');
-// }
+@keyframes fadeInOpacity {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}

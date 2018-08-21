@@ -1,15 +1,23 @@
 .background-div {
-  background: url('/images/fence2.jpg');
+  background: url("/images/floor1.jpg");
   background-repeat: no-repeat;
   background-size: cover;
-  background-attachment: fixed;
-  // background-size: cover;
+  // background-attachment: fixed;
+  background-size: cover;
+  // background: repeating-linear-gradient(to right, rgb(100, 75, 75), rgb(110, 80, 80) 10%, rgb(150, 125, 125) 11%);
+  // background: repeating-linear-gradient(to right, #933F00, #A34F10 10%, #B34F10 12%, #331111 13%);
+  // background: repeating-linear-gradient(to right, #933F00, #A34F10 7.7%, #B34F10 9.2%, #331111 10%);
+  // background: repeating-linear-gradient(to right, #331111, #530E11 0.5%, #601F03 9%, #530E11 9.5%, #331111 10%);
+  // background: #000011;
+  // background: repeating-linear-gradient(to right, #B35F20, #C36F30 10%, #D36F30 12%, #331111 13%);
   height: 100vh;
-  min-height: 65rem;
-  width: 100vw;
+  min-height: 90rem;
+  width: 100%;
   max-width: 100vw;
+  min-width: 260px;
   display: flex;
   flex-direction: column;
+  color: lighten(#002f6c, 15%);
 }
 
 .box-layout {
@@ -22,7 +30,7 @@
 }
 
 .box-layout__box {
-  background: fade-out(white, .15);
+  background: fade-out(white, 0.15);
   border-radius: 3px;
   padding: $l-size $m-size;
   text-align: center;

@@ -1,12 +1,20 @@
 .header {
-  //background: $dark-blue;
   padding-top: 1rem;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 99999;
+}
+
+.header-spacing {
+  height: 12rem;
+  width: 100%;
 }
 
 .header__tape {
   width: 80%;
   margin-top: -2.5rem;
-  
+
   &--top-left {
     animation: moveInTopLeft 3s ease-out;
   }
@@ -21,17 +29,18 @@
 }
 
 .header__content {
-  font-family: 'Indie Flower', cursive;
-  align-items: center;
+  font-family: "Indie Flower", cursive;
   display: flex;
+  align-items: center;
   justify-content: space-around;
   padding: $s-size 0;
+  width: 100%;
 }
 
 .header__title {
   width: 8rem;
   height: 9rem;
-  background: url('/images/notebook-page-transparent-small.jpg');
+  background: url("/images/notebook-page-transparent-small.jpg");
   background-size: cover;
   border-radius: 5px;
   text-decoration: none;
@@ -40,8 +49,45 @@
   align-items: center;
   padding: 0;
   animation: fadeIn 1.5s ease-in;
+  position: fixed;
+  top: 1rem;
+  right: calc(25% - 4rem);
+  transition: right 0.4s ease-in, top 0.4s ease-in, transform 0.4s ease-in;
+
+  &:hover {
+    cursor: pointer;
+  }
+
+  &:nth-of-type(2) {
+    right: calc(50% - 4rem);
+  }
+  &:nth-of-type(3) {
+    right: calc(75% - 4rem);
+  }
 
   h3 {
     margin: 0 auto;
+    color: lighten(#002f6c, 15%);
   }
+
+  &_hide {
+    top: 0.5rem;
+    position: fixed;
+    right: 0.5rem;
+    transform: scale(0.6);
+    // margin-left: auto;
+    // margin-right: 0;
+    // transform: translateX(400%);
+
+    &:nth-of-type(2) {
+      right: 0.5rem;
+    }
+    &:nth-of-type(3) {
+      right: 0.5rem;
+    }
+  }
+}
+
+.bigger-arrow {
+  font-size: 4rem;
 }
