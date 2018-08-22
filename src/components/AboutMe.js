@@ -117,7 +117,7 @@ class AboutMe extends React.Component {
               <br />
             </p>
             <p className="about-me-quote">
-              <em>"Easy is boring, let's have some fun!"</em>
+              <em>Easy is boring, let's have some fun!</em>
             </p>
           </div>
         </div>

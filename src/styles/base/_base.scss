@@ -60,6 +60,9 @@ button:disabled {
   width: 100%;
   min-width: 260px;
   max-width: 100vw;
-  min-height: 2rem;
-  background: #531f00;
+  min-height: 5rem;
+  height: 5rem;
+  background: url("/images/dirt.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
 }

@@ -55,6 +55,7 @@
   width: 4rem;
   height: 6rem;
   background: #555555;
+  background: $light-grey;
   border: 1.5rem solid black;
   border-radius: 0 0 4rem 4rem;
   z-index: 5;
@@ -80,6 +81,7 @@
   width: 19rem;
   height: 8rem;
   background: #555555;
+  background: $light-grey;
   border: 0.5rem solid black;
   border-radius: 0.5rem;
   margin-bottom: -4rem;
@@ -137,6 +139,7 @@
   width: 2rem;
   height: 2rem;
   background: #555555;
+  background: $light-grey;
   border-radius: 0.5rem;
   color: white;
   cursor: pointer;
@@ -148,19 +151,19 @@
 
   &--ok {
     border-radius: 5rem;
-    background: dodgerblue;
+    background: $main-blue;
   }
 
   &--guide {
     width: 3rem;
     height: 1.5rem;
-    background: dodgerblue;
+    background: $main-blue;
   }
 
   &--info {
     width: 3rem;
     height: 1.5rem;
-    background: dodgerblue;
+    background: $main-blue;
   }
 
   &-div {
@@ -173,8 +176,10 @@
     background: inherit;
     outline: none;
     border-width: 1px;
-    border-color: #cccccc;
+    border-color: darken($light-grey, 25%);
     color: #cccccc;
+    color: $light-grey;
+    color: #000;
     border-style: outset;
 
     &:active {

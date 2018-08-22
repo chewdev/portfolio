@@ -1,130 +1,129 @@
 .contact-section {
-    max-width: 100vw;
-    min-width: 260px; 
-    width: 100%;
-    height: 100vh;
-    min-height: 600px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    background: #AAAAAA
+  max-width: 100vw;
+  min-width: 260px;
+  width: 100%;
+  height: 100vh;
+  min-height: 600px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: $main-blue;
 }
 
 .contact-form {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 35rem;
+  margin: 0 auto;
+  font-family: "Indie Flower", cursive;
+  border: 0.5rem solid black;
+  color: #44aacc;
+  color: $main-blue;
+  padding: $m-size;
+  border-radius: 0.5rem 0.5rem 0 0;
+  background: white;
+
+  // &::after {
+  //     content: '';
+  //     width: 100%;
+  //     height: 2rem;
+  //     border: .5rem solid black;
+  //     transform: skewX(10deg);
+  // }
+
+  &-whiteboard-bottom {
     width: 35rem;
+    height: 3rem;
+    border: 0.5rem solid black;
+    border-top: none;
+    transform: skewX(-45deg) translate(-1.5rem, 0);
     margin: 0 auto;
-    font-family: 'Indie Flower', cursive;
-    border: .5rem solid black;
-    color: #44AACC;
-    padding: $m-size;
-    border-radius: .5rem .5rem 0 0;
+    border-radius: 0 0 0.5rem 0.5rem;
+    box-shadow: 1.5rem 1rem 0 0 black;
     background: white;
-    
-    // &::after {
-    //     content: '';
-    //     width: 100%;
-    //     height: 2rem;
-    //     border: .5rem solid black;
-    //     transform: skewX(10deg);
+  }
+
+  &-title {
+    width: 100%;
+    text-align: center;
+    margin: 0;
+    margin-bottom: $m-size;
+  }
+
+  &-label {
+    align-self: flex-start;
+  }
+
+  &-input-div {
+    width: 100%;
+    display: flex;
+    &:before {
+      content: "X";
+      color: red;
+      font-size: $l-size;
+      padding-bottom: 0.5rem;
+      line-height: 1;
+    }
+  }
+
+  &-contactinput {
+    width: 100%;
+    border: none;
+    border-bottom: 1px solid $main-blue;
+    margin-bottom: $m-size;
+    font-family: cursive, "Indie Flower";
+    line-height: 1;
+    font-size: $m-size;
+    padding-left: 1rem;
+  }
+
+  &-comments-area {
+    background: repeating-linear-gradient(
+      white,
+      white 1.9rem,
+      $main-blue 1.9rem,
+      $main-blue 2rem
+    );
+    line-height: 2rem;
+    resize: none;
+    width: 100%;
+    height: 16rem;
+    border: none;
+    font-family: cursive, "Indie Flower";
+    overflow: hidden;
+    margin-bottom: 1.6rem;
+    // border-bottom: 1px solid #44AACC;
+    // &:focus {
+    // background: rgba(200, 220, 255, 0.2);
     // }
-
-    &-whiteboard-bottom {
-        width: 35rem;
-        height: 3rem;
-        border: .5rem solid black;
-        border-top: none;
-        transform: skewX(-45deg) translate(-1.5rem, 0);
-        margin: 0 auto;
-        border-radius: 0 0 .5rem .5rem;
-        box-shadow: 1.5rem 1rem 0 0 black;
-        background: white;
-    }
-
-    &-title {
-        width: 100%;
-        text-align: center;
-        margin: 0;
-        margin-bottom: $m-size;
-    }
-
-    &-label {
-        align-self: flex-start;
-    }
-
-    &-input-div {
-        width: 100%;
-        display: flex;
-        &:before {
-            content: 'X';
-            color: red;
-            font-size: $l-size;
-            padding-bottom: .5rem;
-            line-height: 1;
-        }
-    }
-
-    &-contactinput {
-        width: 100%;
-        border: none;
-        border-bottom: 1px solid #44AACC;
-        margin-bottom: $m-size;
-        font-family: cursive, 'Indie Flower';
-        line-height: 1;
-        font-size: $m-size;
-        padding-left: 1rem;
-    }
-    
-    &-comments-area {
-        background: repeating-linear-gradient(white, white 1.9rem, #44AACC 1.9rem, #44AACC 2rem);
-        line-height: 2rem;
-        resize: none;
-        width: 100%;
-        height: 16rem;
-        border: none;
-        font-family: cursive, 'Indie Flower';
-        overflow: hidden;
-        // border-bottom: 1px solid #44AACC;
-
-        // &:focus {
-        //     background: rgba(200, 220, 255, 0.2);
-        // }
-    }
-
-    &-submit {
-        border: none;
-        color: black;
-        border-bottom: 1px solid #44AACC;
-        background: inherit;
-        cursor: pointer;
-        font-family: 'Indie Flower', cursive;
-        font-size: 2.4rem;
-    }
+  }
+  &-submit {
+    border: none;
+    color: black;
+    border-bottom: 1px solid $main-blue;
+    background: inherit;
+    cursor: pointer;
+    font-family: "Indie Flower", cursive;
+    font-size: 2.4rem;
+  }
 }
-
 .fade-away {
-    animation: fade-away 1s forwards;
-    
+  animation: fade-away 1s forwards;
 }
-
 .hide-form {
-    display: none;
+  display: none;
 }
-
 @keyframes fade-away {
-    0% {
-        opacity: 1;
-    }
-
-    50% {
-        opacity: 0.5;
-    }
-
-    100% {
-        opacity: 0;
-        display: none;
-    }
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 0;
+    display: none;
+  }
 }

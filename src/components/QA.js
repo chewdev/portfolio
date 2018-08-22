@@ -150,7 +150,7 @@ class QA extends React.Component {
             background: "inherit",
             border: "none",
             fontFamily: "inherit",
-            height: "10.5rem",
+            height: "11.5rem",
             width: "27rem",
             resize: "none",
             overflow: "hidden"
