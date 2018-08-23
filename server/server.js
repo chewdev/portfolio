@@ -55,6 +55,21 @@ app.post("/contact", (req, res) => {
     submittedSelectedOption
   } = data;
 
+  connection.query(
+    "INSERT INTO submitted_emails SET ?",
+    {
+      full_name: submittedName,
+      email: submittedEmail,
+      comments: submittedComments,
+      reason: submittedSelectedOption
+    },
+    function(err, results) {
+      if (err) {
+        console.log(err);
+      }
+    }
+  );
+
   const mailOptions = {
     from: submittedEmail,
     to: process.env.SEND_EMAIL,
