@@ -2,7 +2,7 @@
   // background: url('/images/bg3.jpg');
   // background-repeat: no-repeat;
   // background-size: cover;
-  background: darken($light-grey, 20%);
+  background: $light-grey;
   height: 100vh;
   min-height: 120rem;
   width: 100%;
@@ -16,7 +16,7 @@
   @media (min-width: 800px) {
     background: repeating-linear-gradient(
       #aaaaaa,
-      #a0a0a0 24.5%,
+      #999999 24.5%,
       #666666 24.75%,
       #555555 25%
     );
@@ -47,7 +47,7 @@
   background: #44aacc;
   background: #1572b6;
   background: $main-blue;
-  border: 1.5rem solid $light-grey;
+  border: 1.5rem solid #666666;
   border-radius: 2rem;
   color: lighten($light-grey, 40%);
   width: 35rem;
