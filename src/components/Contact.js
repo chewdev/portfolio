@@ -18,7 +18,8 @@ export default class Contact extends React.Component {
       submittedSelectedOption: "",
       formClass: "",
       submitted: false,
-      submitError: false
+      submitError: false,
+      commentCount: 0
     };
 
     this.setContactName = this.setContactName.bind(this);
@@ -46,10 +47,11 @@ export default class Contact extends React.Component {
 
   setComments(e) {
     const comments = e.target.value;
-    if (comments.length > 255) {
+    const commentCount = comments.length;
+    if (commentCount > 255) {
       return;
     }
-    this.setState({ comments });
+    this.setState({ comments, commentCount });
   }
 
   setSelectOption(e) {
@@ -166,9 +168,16 @@ export default class Contact extends React.Component {
                   onChange={this.setContactEmail}
                 />
               </div>
-              <label className="contact-form-label" htmlFor="comments">
-                Comments:
-              </label>
+              <div className="contact-form-label-count-div">
+                <label className="contact-form-label" htmlFor="comments">
+                  Comments:
+                </label>
+                {this.state.commentCount > 235 ? (
+                  <div className="contact-form-comment-count">
+                    {255 - this.state.commentCount} characters left
+                  </div>
+                ) : null}
+              </div>
               <textarea
                 className="contact-form-comments-area"
                 name="comments"
@@ -184,6 +193,17 @@ export default class Contact extends React.Component {
                 className="contact-form-contactinput"
                 name="contactpurpose"
               >
+                <option className="contact-form-reason-option" value="Say Hi">
+                  {" "}
+                  Say Hi{" "}
+                </option>
+                <option
+                  className="contact-form-reason-option"
+                  value="Let's Chat"
+                >
+                  {" "}
+                  Let's Chat{" "}
+                </option>
                 <option
                   className="contact-form-reason-option"
                   value="Freelance Work"
@@ -197,17 +217,6 @@ export default class Contact extends React.Component {
                 >
                   {" "}
                   Job Opportunity{" "}
-                </option>
-                <option className="contact-form-reason-option" value="Say Hi">
-                  {" "}
-                  Say Hi{" "}
-                </option>
-                <option
-                  className="contact-form-reason-option"
-                  value="Let's Chat"
-                >
-                  {" "}
-                  Let's Chat{" "}
                 </option>
               </select>
               <input
