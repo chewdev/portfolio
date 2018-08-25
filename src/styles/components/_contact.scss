@@ -78,15 +78,18 @@
     font-size: $m-size;
     padding-left: 1rem;
   }
-  &-label-count-div {
+
+  &-label-error-div {
     display: flex;
     justify-content: space-between;
     width: 100%;
   }
-  &-comment-count {
+
+  &-error {
     color: red;
     font-size: 1.4rem;
   }
+  
   &-comments-area {
     background: repeating-linear-gradient(
       white,

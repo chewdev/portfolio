@@ -19,7 +19,9 @@ export default class Contact extends React.Component {
       formClass: "",
       submitted: false,
       submitError: false,
-      commentCount: 0
+      commentCount: 0,
+      emailError: false,
+      nameError: false
     };
 
     this.setContactName = this.setContactName.bind(this);
@@ -27,6 +29,7 @@ export default class Contact extends React.Component {
     this.setComments = this.setComments.bind(this);
     this.setSelectOption = this.setSelectOption.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
+    this.validateEmail = this.validateEmail.bind(this);
   }
 
   setContactName(e) {
@@ -61,6 +64,10 @@ export default class Contact extends React.Component {
     this.setState({ selectedOption: e.target.value });
   }
 
+  validateEmail(email) {
+    return /^.+@.+\..+$/.test(email);
+  }
+
   onSubmit(e) {
     e.preventDefault();
 
@@ -68,6 +75,20 @@ export default class Contact extends React.Component {
     const submittedEmail = e.target.contactemail.value;
     const submittedComments = e.target.comments.value;
     const submittedSelectedOption = e.target.contactpurpose.value;
+    let emailError = false;
+    let nameError = false;
+
+    if (!this.validateEmail(submittedEmail)) {
+      emailError = true;
+    }
+    if (submittedName.length < 1) {
+      nameError = true;
+    }
+
+    if (nameError || emailError) {
+      this.setState({ emailError, nameError });
+      return;
+    }
 
     this.setState({
       submittedName,
@@ -77,7 +98,9 @@ export default class Contact extends React.Component {
       contactName: "",
       contactEmail: "",
       comments: "",
-      formClass: "fade-away"
+      formClass: "fade-away",
+      emailError,
+      nameError
     });
     this.timeout = setTimeout(() => {
       this.setState({ formClass: "hide-form" });
@@ -147,9 +170,14 @@ export default class Contact extends React.Component {
               onSubmit={this.onSubmit}
             >
               <h1 className="contact-form-title">Contact</h1>
+              <div className="contact-form-label-error-div">
               <label className="contact-form-label" htmlFor="contactname">
                 Full Name:
               </label>
+              {
+                this.state.nameError ? (<div className="contact-form-error">Name is required</div>) : null
+              }
+              </div>
               <div className="contact-form-input-div">
                 <input
                   className="contact-form-contactinput"
@@ -159,9 +187,14 @@ export default class Contact extends React.Component {
                   onChange={this.setContactName}
                 />
               </div>
+              <div className="contact-form-label-error-div">
               <label className="contact-form-label" htmlFor="contactemail">
                 E-mail:
               </label>
+              {
+                this.state.emailError ? (<div className="contact-form-error">Please input a valid e-mail</div>) : null
+              }
+              </div>
               <div className="contact-form-input-div">
                 <input
                   className="contact-form-contactinput"
@@ -171,12 +204,12 @@ export default class Contact extends React.Component {
                   onChange={this.setContactEmail}
                 />
               </div>
-              <div className="contact-form-label-count-div">
+              <div className="contact-form-label-error-div">
                 <label className="contact-form-label" htmlFor="comments">
                   Comments:
                 </label>
                 {this.state.commentCount > 235 ? (
-                  <div className="contact-form-comment-count">
+                  <div className="contact-form-error">
                     {255 - this.state.commentCount} characters left
                   </div>
                 ) : null}
