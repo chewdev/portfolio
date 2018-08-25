@@ -31,6 +31,9 @@ export default class Contact extends React.Component {
 
   setContactName(e) {
     const contactName = e.target.value;
+    if (!contactName.slice(contactName.length - 1).match(/[a-zA-Z ]/) && contactName !== "") {
+      return;
+    }
     if (contactName.length > 50) {
       return;
     }
