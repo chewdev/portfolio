@@ -261,8 +261,15 @@ class Projects extends React.Component {
           remoteLightClass: "flash-red"
         }));
       }
-      this.removeRemoteLightClass();
+    } else {
+      this.setState(prevState => {
+        return {
+          remoteLightClass: "flash-red"
+        }
+      });
     }
+
+    this.removeRemoteLightClass();
   }
 
   guide() {
@@ -313,10 +320,14 @@ class Projects extends React.Component {
             ? this.projects.length - 1
             : prevState.currProjInd - 1;
         return {
-          currProjInd
+          currProjInd,
+          remoteLightClass: "flash-green"
         };
       });
+    } else {
+      this.setState({remoteLightClass: "flash-red"});
     }
+    this.removeRemoteLightClass();
   }
 
   down() {
@@ -327,16 +338,26 @@ class Projects extends React.Component {
             ? 0
             : prevState.currProjInd + 1;
         return {
-          currProjInd
+          currProjInd,
+          remoteLightClass: "flash-green"
         };
       });
+    } else {
+      this.setState({remoteLightClass: "flash-red"});
     }
+
+    this.removeRemoteLightClass();
   }
 
   ok() {
-    if (this.state.tvDisplayType === "projlist") {
-      this.setState({ tvDisplayType: "image" });
-    }
+    if (this.state.tvDisplayType === "image") {
+      document.querySelector('.project-link').click();
+      this.setState({remoteLightClass: "flash-green"});
+    } else {
+      this.setState({ tvDisplayType: "image", remoteLightClass: "flash-green" });
+    } 
+
+    this.removeRemoteLightClass();
   }
 
   render() {
