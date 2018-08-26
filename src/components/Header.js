@@ -57,6 +57,20 @@ class Header extends React.Component {
                 className={`header__title ${
                   this.state.isOpen ? "" : this.state.hideClass
                 }`}
+                onClick={() => this.scrollToComp("#top-level")}
+              >
+                <img
+                  className="header__tape header__tape--top-left"
+                  src="/images/tape-horizontal.png"
+                />
+                <h3>
+                  <i className="fas fa-arrow-up medium-arrow" />
+                </h3>
+              </a>
+              <a
+                className={`header__title ${
+                  this.state.isOpen ? "" : this.state.hideClass
+                }`}
                 onClick={() => this.scrollToComp("#projects")}
               >
                 <img

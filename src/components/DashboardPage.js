@@ -8,7 +8,7 @@ import Walker from "./Walker";
 import LazyLoad from "react-lazy-load";
 
 const DashboardPage = () => (
-  <div>
+  <div id="top-level">
     {/* <Walker />  */}
     <div className="background-div">
       <Header />
