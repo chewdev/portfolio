@@ -173,7 +173,7 @@ class QA extends React.Component {
         >
           Ask
         </button>
-        <div className={`paper-text ${this.chromeClass}`}>
+        <div className={`paper-text paper-text-ql ${this.chromeClass}`}>
           {this.state.currentText ? <p>{this.state.currentText}</p> : ""}
           {this.state.questionArr.length > 0 ? (
             <ul>
