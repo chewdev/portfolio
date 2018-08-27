@@ -197,7 +197,11 @@ class QA extends React.Component {
             </ul>
           ) : this.state.currentText !== "" ? null : this.state.textInput !==
           "" ? (
-            <p>No matching questions</p>
+            <Typist
+              avgTypingDelay={10}
+              stdTypingDelay={10}
+              cursor={{ show: false }}
+            ><p>No matching questions</p></Typist>
           ) : null}
         </div>
       </div>
