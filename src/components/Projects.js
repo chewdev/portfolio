@@ -53,8 +53,8 @@ class Projects extends React.Component {
         imgSrc: "/images/portfolio.jpg",
         title: "Portfolio",
         description:
-          "This portfolio site was custom built entirely by myself. ",
-        tools: ["Node", "MongoDB", "Express", "JavaScript", "HTML5", "CSS3"],
+          "This site was built from scratch using Node, React, Express and MySQL. Built a strong foundation in responsive web design with HTML and CSS while developing this site. Used Google's Gmail API and Nodemailer to connect contact form to email and practiced form validation. Most importantly, this site was essential in building my comfort level working with state management and React lifecycle methods and improving performance.",
+        tools: ["Node", "MongoDB", "Express", "JavaScript", "HTML5", "CSS3", "MySQL"],
         link: "/",
         channelName: "YCA"
       },
@@ -285,7 +285,8 @@ class Projects extends React.Component {
         };
       } else {
         return {
-          tvDisplayType
+          tvDisplayType,
+          remoteLightClass: "flash-green"
         };
       }
     });
@@ -306,10 +307,12 @@ class Projects extends React.Component {
         };
       } else {
         return {
-          tvDisplayType
+          tvDisplayType,
+          remoteLightClass: "flash-green"
         };
       }
     });
+    this.removeRemoteLightClass();
   }
 
   up() {
