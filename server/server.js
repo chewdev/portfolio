@@ -81,7 +81,6 @@ app.post("/contact", (req, res) => {
     if (err) {
       console.log(err);
     } else {
-      console.log(data);
       const accepted = !!data.accepted;
       const acceptedJSON = JSON.stringify({ accepted });
       res.json(acceptedJSON);
@@ -96,14 +95,12 @@ app.get("/questions", (req, res) => {
       if (error) {
         throw error;
       }
-      console.log("The answer is: ", results[0].question);
       res.json(results);
     }
   );
 });
 
 app.get("*", (req, res) => {
-  console.log("connection");
   res.sendFile(path.join(publicPath, "index.html"));
 });
 

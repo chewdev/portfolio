@@ -63,9 +63,9 @@ class Header extends React.Component {
                   className="header__tape header__tape--top-left"
                   src="/images/tape-horizontal.png"
                 />
-                <h3>
+                <div>
                   <i className="fas fa-arrow-up medium-arrow" />
-                </h3>
+                </div>
               </a>
               <a
                 className={`header__title ${
@@ -77,7 +77,7 @@ class Header extends React.Component {
                   className="header__tape header__tape--top-left"
                   src="/images/tape-horizontal.png"
                 />
-                <h3>Projects</h3>
+                <div>Projects</div>
               </a>
               <a
                 className={`header__title ${
@@ -89,7 +89,7 @@ class Header extends React.Component {
                   className="header__tape header__tape--middle"
                   src="/images/tape-horizontal.png"
                 />
-                <h3>About Me</h3>
+                <div>About Me</div>
               </a>
               <a
                 className={`header__title ${
@@ -107,13 +107,13 @@ class Header extends React.Component {
                   className="header__tape header__tape--top-right"
                   src="/images/tape-horizontal.png"
                 />
-                <h3>
+                <div>
                   {!this.state.isOpen && this.state.hideClass !== "" ? (
                     <i className="fas fa-arrow-left bigger-arrow" />
                   ) : (
                     "Contact"
                   )}
-                </h3>
+                </div>
               </a>
             </div>
           </div>

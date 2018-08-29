@@ -54,7 +54,15 @@ class Projects extends React.Component {
         title: "Portfolio",
         description:
           "This site was built from scratch using Node, React, Express and MySQL. Built a strong foundation in responsive web design with HTML and CSS while developing this site. Used Google's Gmail API and Nodemailer to connect contact form to email and practiced form validation. Most importantly, this site was essential in building my comfort level working with state management and React lifecycle methods and improving performance.",
-        tools: ["Node", "MongoDB", "Express", "JavaScript", "HTML5", "CSS3", "MySQL"],
+        tools: [
+          "Node",
+          "MongoDB",
+          "Express",
+          "JavaScript",
+          "HTML5",
+          "CSS3",
+          "MySQL"
+        ],
         link: "/",
         channelName: "YCA"
       },
@@ -265,7 +273,7 @@ class Projects extends React.Component {
       this.setState(prevState => {
         return {
           remoteLightClass: "flash-red"
-        }
+        };
       });
     }
 
@@ -328,7 +336,7 @@ class Projects extends React.Component {
         };
       });
     } else {
-      this.setState({remoteLightClass: "flash-red"});
+      this.setState({ remoteLightClass: "flash-red" });
     }
     this.removeRemoteLightClass();
   }
@@ -346,7 +354,7 @@ class Projects extends React.Component {
         };
       });
     } else {
-      this.setState({remoteLightClass: "flash-red"});
+      this.setState({ remoteLightClass: "flash-red" });
     }
 
     this.removeRemoteLightClass();
@@ -354,11 +362,14 @@ class Projects extends React.Component {
 
   ok() {
     if (this.state.tvDisplayType === "image") {
-      document.querySelector('.project-link').click();
-      this.setState({remoteLightClass: "flash-green"});
+      document.querySelector(".project-link").click();
+      this.setState({ remoteLightClass: "flash-green" });
     } else {
-      this.setState({ tvDisplayType: "image", remoteLightClass: "flash-green" });
-    } 
+      this.setState({
+        tvDisplayType: "image",
+        remoteLightClass: "flash-green"
+      });
+    }
 
     this.removeRemoteLightClass();
   }

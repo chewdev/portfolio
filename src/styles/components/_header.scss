@@ -54,8 +54,14 @@
   right: calc(20% - 4rem);
   transition: right 0.4s ease-in, top 0.4s ease-in, transform 0.4s ease-in;
 
+  & div {
+    font-weight: 700;
+    width: 100%;
+    text-align: center;
+  }
+
   @media (max-width: 400px) {
-    transform: scale(.8);
+    transform: scale(0.8);
   }
 
   &:hover {
@@ -93,10 +99,11 @@
     // margin-right: 0;
     // transform: translateX(400%);
 
-    &:nth-of-type(2), &:nth-of-type(3), &:nth-of-type(4) {
+    &:nth-of-type(2),
+    &:nth-of-type(3),
+    &:nth-of-type(4) {
       right: 0.5rem;
     }
-    
   }
 }
 

@@ -17,11 +17,9 @@ class Introduction extends React.Component {
 
   componentDidMount() {
     if (this.state.qA.length === 0) {
-      console.log("ran");
       fetch("/questions")
         .then(data => data.json())
         .then(data => {
-          console.log(data);
           this.setState({ qA: data });
         });
     }
