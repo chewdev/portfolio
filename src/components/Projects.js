@@ -32,7 +32,7 @@ class Projects extends React.Component {
         channelName: "YCA"
       },
       {
-        imgSrc: "/images/indecision-app.jpg",
+        imgSrc: "/images/indecision-app.JPG",
         title: "Indecision App",
         description:
           "Indecision App is a simple CRUD application that allows a user to add and remove items to a list. User can then allow the app to make a decision for them. Built with React.",
@@ -41,7 +41,7 @@ class Projects extends React.Component {
         channelName: "IDA"
       },
       {
-        imgSrc: "/images/color-guessing-game.jpg",
+        imgSrc: "/images/color-guessing-game.JPG",
         title: "Color Guessing Game",
         description:
           "Color guessing game is a simple game for practicing your RGB colors. Built with Vanilla JavaScript, HTML and CSS with Bootstrap.",
@@ -50,7 +50,7 @@ class Projects extends React.Component {
         channelName: "CGG"
       },
       {
-        imgSrc: "/images/portfolio.jpg",
+        imgSrc: "/images/portfolio.JPG",
         title: "Portfolio",
         description:
           "This site was built from scratch using Node, React, Express and MySQL. Built a strong foundation in responsive web design with HTML and CSS while developing this site. Used Google's Gmail API and Nodemailer to connect contact form to email and practiced form validation. Most importantly, this site was essential in building my comfort level working with state management and React lifecycle methods and improving performance.",
