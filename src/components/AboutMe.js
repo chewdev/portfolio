@@ -1,76 +1,96 @@
 import React from "react";
+import {
+  JavaScriptSVG,
+  BootstrapSVG,
+  CSSSVG,
+  GitSVG,
+  GithubSVG,
+  GraphQLSVG,
+  HerokuSVG,
+  HTMLSVG,
+  JQuerySVG,
+  MongoDBSVG,
+  MySQLSVG,
+  NodeSVG,
+  NPMSVG,
+  ReactSVG,
+  ReduxSVG,
+  SassSVG,
+  WebpackSVG
+} from "./SVGs";
 
 class AboutMe extends React.Component {
   constructor(props) {
     super(props);
+
     this.skills = [
       {
-        src: "css3",
-        color: "#1572B6"
-      },
-      {
-        src: "html5",
-        color: "#E34F26"
-      },
-      {
-        src: "javascript",
+        comp: <JavaScriptSVG color={"#F7DF1E"} />,
         color: "#F7DF1E"
       },
       {
-        src: "react",
-        color: "#61DAFB"
-      },
-      {
-        src: "node-dot-js",
-        color: "#339933"
-      },
-      {
-        src: "npm",
-        color: "#CB3837"
-      },
-      {
-        src: "git",
-        color: "#F05032"
-      },
-      {
-        src: "mysql",
-        color: "#4479A1"
-      },
-      {
-        src: "graphql",
-        color: "#E10098"
-      },
-      {
-        src: "mongodb",
-        color: "#47A248"
-      },
-      {
-        src: "redux",
-        color: "#764ABC"
-      },
-      {
-        src: "github",
-        color: "#181717"
-      },
-      {
-        src: "webpack",
-        color: "#8DD6F9"
-      },
-      {
-        src: "sass",
-        color: "#CC6699"
-      },
-      {
-        src: "bootstrap",
+        comp: <BootstrapSVG color={"#563D7C"} />,
         color: "#563D7C"
       },
       {
-        src: "jquery",
+        comp: <CSSSVG color={"#1572B6"} />,
+        color: "#1572B6"
+      },
+      {
+        comp: <GitSVG color={"#F05032"} />,
+        color: "#F05032"
+      },
+      {
+        comp: <GithubSVG color={"#181717"} />,
+        color: "#181717"
+      },
+      {
+        comp: <GraphQLSVG color={"#E10098"} />,
+        color: "#E10098"
+      },
+      {
+        comp: <HerokuSVG color={"#430098"} />,
+        color: "#430098"
+      },
+      {
+        comp: <HTMLSVG color={"#E34F26"} />,
+        color: "#E34F26"
+      },
+      {
+        comp: <JQuerySVG color={"#0769AD"} />,
         color: "#0769AD"
       },
       {
-        src: "heroku",
-        color: "#430098"
+        comp: <MongoDBSVG color={"#47A248"} />,
+        color: "#47A248"
+      },
+      {
+        comp: <MySQLSVG color={"#4479A1"} />,
+        color: "#4479A1"
+      },
+      {
+        comp: <NodeSVG color={"#339933"} />,
+        color: "#339933"
+      },
+      {
+        comp: <NPMSVG color={"#CB3837"} />,
+        color: "#CB3837"
+      },
+      {
+        comp: <ReactSVG color={"#61DAFB"} />,
+        color: "#61DAFB"
+      },
+      {
+        comp: <ReduxSVG color={"#764ABC"} />,
+        color: "#764ABC"
+      },
+      {
+        comp: <SassSVG color={"#CC6699"} />,
+        color: "#CC6699"
+      },
+      {
+        comp: <WebpackSVG color={"#8DD6F9"} />,
+        color: "#8DD6F9"
       }
     ];
 
@@ -91,9 +111,6 @@ class AboutMe extends React.Component {
   }
 
   render() {
-    const skillsStyles = {
-      background: this.skills[this.state.skillsInd].color
-    };
     const ipadStyles = {
       background: this.skills[this.state.skillsInd].color
     };
@@ -134,12 +151,7 @@ class AboutMe extends React.Component {
             <h2>Skills</h2>
             <div className="table-container">
               <div className="tablet" style={ipadStyles}>
-                <img
-                  className="tablet-content"
-                  src={`/images/${this.skills[this.state.skillsInd].src}.svg`}
-                  style={skillsStyles}
-                  alt="CSS3 Logo"
-                />
+                {this.skills[this.state.skillsInd].comp}
               </div>
             </div>
           </div>
