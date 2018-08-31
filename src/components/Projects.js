@@ -424,7 +424,7 @@ class Projects extends React.Component {
 
     return (
       <div id="projects" className="projects">
-        <LazyLoad offset={700} throttle={100}>
+        <LazyLoad offset={800} throttle={25}>
           <div className="project-tv-remote-container">
             <div className="project-container">
               {this.state.tvDisplayType === "image" ? (

@@ -163,7 +163,7 @@ export default class Contact extends React.Component {
         {this.state.submitError && (
           <h3>There was an error submitting the form, please try again.</h3>
         )}
-        <LazyLoad offset={700} throttle={100}>
+        <LazyLoad offset={600} throttle={25}>
           <div className={this.state.formClass}>
             <form
               className={`contact-form ${this.state.formClass}`}
