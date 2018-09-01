@@ -1,5 +1,6 @@
 import React from "react";
 import LazyLoad from "react-lazy-load";
+import ReactTypist from "react-typist";
 
 export default class Contact extends React.Component {
   constructor(props) {
@@ -165,9 +166,17 @@ export default class Contact extends React.Component {
         )}
         <LazyLoad offset={600} throttle={25}>
           <div className={`contact-form`}>
-            {this.state.submitted ? (<div className="show-success">
-              <h2>Successfully submitted. Thank you for reaching out!</h2>
-            </div>) : null}
+            {this.state.submitted ? (
+              <ReactTypist 
+                avgTypingDelay={30}
+                stdTypingDelay={15}
+                cursor={{ show: false }}
+              >
+                <div className="show-success">
+                  <h2>Successfully submitted. Thank you for reaching out!</h2>
+                </div>
+              </ReactTypist>
+            ) : null}
             <form
               className={`${this.state.formClass}`}
               onSubmit={this.onSubmit}
