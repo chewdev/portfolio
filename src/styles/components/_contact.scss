@@ -17,6 +17,11 @@
     #666666 100%
   );
 }
+
+.contact-error {
+  color: $main-red;
+}
+
 .contact-form {
   display: flex;
   flex-direction: column;
@@ -30,6 +35,7 @@
   padding: $m-size;
   border-radius: 0.5rem 0.5rem 0 0;
   background: white;
+  height: 55rem;
   // &::after {
   // content: '';
   // width: 100%;
@@ -62,7 +68,7 @@
     display: flex;
     &:before {
       content: "X";
-      color: red;
+      color: $main-red;
       font-size: $l-size;
       padding-bottom: 0.5rem;
       line-height: 1;
@@ -119,6 +125,8 @@
     cursor: pointer;
     font-family: "Indie Flower", cursive;
     font-size: 2.4rem;
+    display: block;
+    margin: 0 auto;
   }
 }
 .fade-away {

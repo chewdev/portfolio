@@ -161,12 +161,15 @@ export default class Contact extends React.Component {
     return (
       <div id="contact" className="contact-section">
         {this.state.submitError && (
-          <h3>There was an error submitting the form, please try again.</h3>
+          <h3 className="contact-error">There was an error submitting the form, please try again.</h3>
         )}
         <LazyLoad offset={600} throttle={25}>
-          <div className={this.state.formClass}>
+          <div className={`contact-form`}>
+            {this.state.submitted ? (<div className="show-success">
+              <h2>Successfully submitted. Thank you for reaching out!</h2>
+            </div>) : null}
             <form
-              className={`contact-form ${this.state.formClass}`}
+              className={`${this.state.formClass}`}
               onSubmit={this.onSubmit}
             >
               <h1 className="contact-form-title">Contact</h1>
@@ -260,13 +263,11 @@ export default class Contact extends React.Component {
                 type="submit"
                 value="Submit"
               />
-            </form>
-            <div className="contact-form-whiteboard-bottom" />
+            </form>  
           </div>
-        </LazyLoad>
-        <div className={this.state.submitted ? "show-success" : "hide-form"}>
-          <h2>Successfully submitted. Thank you for reaching out!</h2>
-        </div>
+          
+        </LazyLoad><div className="contact-form-whiteboard-bottom" />
+        
       </div>
     );
   }
