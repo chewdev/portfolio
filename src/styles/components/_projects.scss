@@ -119,7 +119,21 @@
 }
 
 .project-info {
-  text-align: center;
+  
+  padding: 0 $s-size;
+  overflow: scroll;
+
+  & h2 {
+    text-align: center;
+    color: $main-blue;
+    padding: 0 $s-size;
+    border-bottom: 1px solid #000;
+  }
+
+  & p {
+    font-size: 1.4rem;
+    padding-top: $s-size;
+  }
 }
 
 .projects-remote {
@@ -187,7 +201,7 @@
     }
 
     &--text {
-      font-size: 0.8rem;
+      font-size: 6px;
       color: white;
     }
 
