@@ -113,7 +113,6 @@ export default class Contact extends React.Component {
 
     // Method to send POST request to server
     const postData = (url = ``, data = {}) => {
-      console.log(data);
       return fetch(url, {
         method: "POST",
         body: JSON.stringify(data),
@@ -122,7 +121,6 @@ export default class Contact extends React.Component {
         }
       }).then(response => {
         const data = response.json();
-        console.log(data);
         return data;
       });
     };
@@ -136,7 +134,6 @@ export default class Contact extends React.Component {
     })
       .then(data => {
         const parsedData = JSON.parse(data);
-        console.log(parsedData);
         //Server should send back accepted as true if email was successful
 
         //If error sending email, set submitError to true to show error message to user
@@ -153,7 +150,6 @@ export default class Contact extends React.Component {
         }
       })
       .catch(error => {
-        console.log(error);
         if (this.timeout) {
           clearTimeout(this.timeout);
         }
