@@ -17,11 +17,9 @@
     #666666 100%
   );
 }
-
 .contact-error {
   color: $main-red;
 }
-
 .contact-form {
   display: flex;
   flex-direction: column;
@@ -53,6 +51,9 @@
     border-radius: 0 0 0.5rem 0.5rem;
     box-shadow: 1.5rem 1rem 0 0 black;
     background: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
   }
   &-title {
     width: 100%;
@@ -85,18 +86,15 @@
     padding-left: 1rem;
     background: inherit;
   }
-
   &-label-error-div {
     display: flex;
     justify-content: space-between;
     width: 100%;
   }
-
   &-error {
     color: red;
     font-size: 1.4rem;
   }
-  
   &-comments-area {
     background: repeating-linear-gradient(
       white,
@@ -146,4 +144,42 @@
     opacity: 0;
     display: none;
   }
+}
+.marker {
+  display: flex;
+  align-items: center;
+  transform: skewX(10deg);
+}
+.marker-body {
+  width: 5rem;
+  height: 0.5rem;
+  background: #000000;
+  transform: translateY(-0.4rem);
+  box-shadow: #111111 1px 1px, #111111 2px 2px, #111111 3px 3px, #111111 4px 4px,
+    #111111 5px 5px;
+  border-radius: 0.5rem 0 0 0.5rem;
+}
+.marker-cap {
+  width: 2rem;
+  height: 0.7rem;
+  background: #000000;
+  transform: translateY(-0.4rem);
+  box-shadow: #111111 1px 1px, #111111 2px 2px, #111111 3px 3px, #111111 4px 4px,
+    #111111 5px 5px;
+  border-radius: 0 0.5rem 0.5rem 0;
+}
+.eraser {
+  width: 7rem;
+  height: 2rem;
+  line-height: 1.5;
+  font-size: $s-size;
+  padding-left: 2rem;
+  color: #555555;
+  background: #000000;
+  transform: translateY(-1rem) skewX(10deg);
+  position: relative;
+  box-shadow: #333333 1px 1px, #333333 2px 2px, #333333 3px 3px, #333333 4px 4px,
+    #333333 5px 5px, #333333 6px 6px, #333333 7px 7px, #333333 8px 8px,
+    #333333 9px 9px;
+  border-radius: 0.5rem;
 }

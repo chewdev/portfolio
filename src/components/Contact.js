@@ -35,7 +35,10 @@ export default class Contact extends React.Component {
 
   setContactName(e) {
     const contactName = e.target.value;
-    if (!contactName.slice(contactName.length - 1).match(/[a-zA-Z ]/) && contactName !== "") {
+    if (
+      !contactName.slice(contactName.length - 1).match(/[a-zA-Z ]/) &&
+      contactName !== ""
+    ) {
       return;
     }
     if (contactName.length > 50) {
@@ -162,12 +165,14 @@ export default class Contact extends React.Component {
     return (
       <div id="contact" className="contact-section">
         {this.state.submitError && (
-          <h3 className="contact-error">There was an error submitting the form, please try again.</h3>
+          <h3 className="contact-error">
+            There was an error submitting the form, please try again.
+          </h3>
         )}
         <LazyLoad offset={600} throttle={25}>
           <div className={`contact-form`}>
             {this.state.submitted ? (
-              <ReactTypist 
+              <ReactTypist
                 avgTypingDelay={30}
                 stdTypingDelay={15}
                 cursor={{ show: false }}
@@ -183,12 +188,12 @@ export default class Contact extends React.Component {
             >
               <h1 className="contact-form-title">Contact</h1>
               <div className="contact-form-label-error-div">
-              <label className="contact-form-label" htmlFor="contactname">
-                Full Name:
-              </label>
-              {
-                this.state.nameError ? (<div className="contact-form-error">Name is required</div>) : null
-              }
+                <label className="contact-form-label" htmlFor="contactname">
+                  Full Name:
+                </label>
+                {this.state.nameError ? (
+                  <div className="contact-form-error">Name is required</div>
+                ) : null}
               </div>
               <div className="contact-form-input-div">
                 <input
@@ -200,12 +205,14 @@ export default class Contact extends React.Component {
                 />
               </div>
               <div className="contact-form-label-error-div">
-              <label className="contact-form-label" htmlFor="contactemail">
-                E-mail:
-              </label>
-              {
-                this.state.emailError ? (<div className="contact-form-error">Please input a valid e-mail</div>) : null
-              }
+                <label className="contact-form-label" htmlFor="contactemail">
+                  E-mail:
+                </label>
+                {this.state.emailError ? (
+                  <div className="contact-form-error">
+                    Please input a valid e-mail
+                  </div>
+                ) : null}
               </div>
               <div className="contact-form-input-div">
                 <input
@@ -272,11 +279,16 @@ export default class Contact extends React.Component {
                 type="submit"
                 value="Submit"
               />
-            </form>  
+            </form>
           </div>
-          
-        </LazyLoad><div className="contact-form-whiteboard-bottom" />
-        
+        </LazyLoad>
+        <div className="contact-form-whiteboard-bottom">
+          <div className="eraser">Expo</div>
+          <div className="marker">
+            <div className="marker-body" />
+            <div className="marker-cap" />
+          </div>
+        </div>
       </div>
     );
   }
