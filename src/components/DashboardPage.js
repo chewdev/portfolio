@@ -19,7 +19,11 @@ const DashboardPage = () => (
     <div className="dirt-transition" />
     <AboutMe />
     <div className="threshold-transition" />
-    <Projects />
+    <div id="projects" className="projects">
+      <LazyLoad offset={800} throttle={25}>
+        <Projects />
+      </LazyLoad>
+    </div>
     <div className="threshold-transition" />
     <Contact />
   </div>

@@ -1,5 +1,4 @@
 import React from "react";
-import LazyLoad from "react-lazy-load";
 
 class Projects extends React.Component {
   constructor(props) {
@@ -423,141 +422,126 @@ class Projects extends React.Component {
     }
 
     return (
-      <div id="projects" className="projects">
-        <LazyLoad offset={800} throttle={25}>
-          <div className="project-tv-remote-container">
-            <div className="project-container">
-              {this.state.tvDisplayType === "image" ? (
-                <a className="project-link" href={project.link} target="_blank">
-                  <img className="project-tv" src={project.imgSrc} />
-                </a>
-              ) : this.state.tvDisplayType === "currprojinfo" ? (
-                <div className="project-info project-link">
-                  <h2>{project.title}</h2>
-                  <p>{project.description}</p>
-                </div>
-              ) : (
-                <div className="project-link">
-                  <ul>{projArr}</ul>
-                </div>
-              )}
-              <div className="top-tv-base" />
-              <div className="bottom-tv-base" />
+      <div className="project-tv-remote-container">
+        <div className="project-container">
+          {this.state.tvDisplayType === "image" ? (
+            <a className="project-link" href={project.link} target="_blank">
+              <img className="project-tv" src={project.imgSrc} />
+            </a>
+          ) : this.state.tvDisplayType === "currprojinfo" ? (
+            <div className="project-info project-link">
+              <h2>{project.title}</h2>
+              <p>{project.description}</p>
             </div>
+          ) : (
+            <div className="project-link">
+              <ul>{projArr}</ul>
+            </div>
+          )}
+          <div className="top-tv-base" />
+          <div className="bottom-tv-base" />
+        </div>
 
-            <ul className="projects-remote">
-              <li className="projects-remote-number-li projects-remote-number-li--container">
-                <ul className="projects-remote-number-ul projects-remote-number-ul--power">
-                  <li
-                    className="projects-remote-input"
-                    onClick={this.changeAuto}
-                  >
-                    <button className="projects-remote-input-div">
-                      {this.state.projIntervalId === null ? (
-                        <i className="fas fa-play" />
-                      ) : (
-                        <i className="fas fa-pause" />
-                      )}
-                    </button>
-                  </li>
-                  <li className="projects-remote-input projects-remote-input--power">
-                    <div
-                      className={`projects-remote-power-ind ${
-                        this.state.remoteLightClass
-                      }`}
-                    />
-                  </li>
-                </ul>
+        <ul className="projects-remote">
+          <li className="projects-remote-number-li projects-remote-number-li--container">
+            <ul className="projects-remote-number-ul projects-remote-number-ul--power">
+              <li className="projects-remote-input" onClick={this.changeAuto}>
+                <button className="projects-remote-input-div">
+                  {this.state.projIntervalId === null ? (
+                    <i className="fas fa-play" />
+                  ) : (
+                    <i className="fas fa-pause" />
+                  )}
+                </button>
               </li>
-              <li className="projects-remote-number-li projects-remote-number-li--container">
-                <ul className="projects-remote-number-ul projects-remote-number-ul--arrows">
-                  <li
-                    className="projects-remote-input projects-remote-input--guide"
-                    onClick={this.guide}
-                  >
-                    <button className="projects-remote-input-div projects-remote-input-div--text">
-                      {" "}
-                      GUIDE{" "}
-                    </button>
-                  </li>
-                  <li
-                    className="projects-remote-input projects-remote-input--info"
-                    onClick={this.info}
-                  >
-                    <button className="projects-remote-input-div projects-remote-input-div--text">
-                      {" "}
-                      INFO{" "}
-                    </button>
-                  </li>
-                </ul>
-              </li>
-              <li className="projects-remote-number-li projects-remote-number-li--container">
-                <ul className="projects-remote-number-ul projects-remote-number-ul--arrows">
-                  <li className="projects-remote-input" onClick={this.up}>
-                    <button className="projects-remote-input-div">
-                      {" "}
-                      <i className="fas fa-chevron-up" />{" "}
-                    </button>
-                  </li>
-                </ul>
-              </li>
-              <li className="projects-remote-number-li projects-remote-number-li--container">
-                <ul className="projects-remote-number-ul projects-remote-number-ul--arrows">
-                  <li className="projects-remote-input" onClick={this.prevProj}>
-                    <button className="projects-remote-input-div">
-                      {" "}
-                      <i className="fas fa-chevron-left" />{" "}
-                    </button>
-                  </li>
-                  <li
-                    className="projects-remote-input projects-remote-input--ok"
-                    onClick={this.ok}
-                  >
-                    <button className="projects-remote-input-div projects-remote-input-div--ok">
-                      OK
-                    </button>
-                  </li>
-                  <li className="projects-remote-input" onClick={this.nextProj}>
-                    <button className="projects-remote-input-div">
-                      {" "}
-                      <i className="fas fa-chevron-right" />{" "}
-                    </button>
-                  </li>
-                </ul>
-              </li>
-              <li className="projects-remote-number-li projects-remote-number-li--container">
-                <ul className="projects-remote-number-ul projects-remote-number-ul--arrows">
-                  <li className="projects-remote-input" onClick={this.down}>
-                    <button className="projects-remote-input-div">
-                      {" "}
-                      <i className="fas fa-chevron-down" />{" "}
-                    </button>
-                  </li>
-                </ul>
-              </li>
-              <li className="projects-remote-number-li">
-                <ul className="projects-remote-number-ul">
-                  {liArr.slice(1, 4)}
-                </ul>
-              </li>
-              <li className="projects-remote-number-li">
-                <ul className="projects-remote-number-ul">
-                  {liArr.slice(4, 7)}
-                </ul>
-              </li>
-              <li className="projects-remote-number-li">
-                <ul className="projects-remote-number-ul">
-                  {liArr.slice(7, 10)}
-                </ul>
-              </li>
-              <li>
-                <ul className="projects-remote-number-ul">
-                  {liArr.slice(0, 1)}
-                </ul>
+              <li className="projects-remote-input projects-remote-input--power">
+                <div
+                  className={`projects-remote-power-ind ${
+                    this.state.remoteLightClass
+                  }`}
+                />
               </li>
             </ul>
-          </div>
-        </LazyLoad>
+          </li>
+          <li className="projects-remote-number-li projects-remote-number-li--container">
+            <ul className="projects-remote-number-ul projects-remote-number-ul--arrows">
+              <li
+                className="projects-remote-input projects-remote-input--guide"
+                onClick={this.guide}
+              >
+                <button className="projects-remote-input-div projects-remote-input-div--text">
+                  {" "}
+                  GUIDE{" "}
+                </button>
+              </li>
+              <li
+                className="projects-remote-input projects-remote-input--info"
+                onClick={this.info}
+              >
+                <button className="projects-remote-input-div projects-remote-input-div--text">
+                  {" "}
+                  INFO{" "}
+                </button>
+              </li>
+            </ul>
+          </li>
+          <li className="projects-remote-number-li projects-remote-number-li--container">
+            <ul className="projects-remote-number-ul projects-remote-number-ul--arrows">
+              <li className="projects-remote-input" onClick={this.up}>
+                <button className="projects-remote-input-div">
+                  {" "}
+                  <i className="fas fa-chevron-up" />{" "}
+                </button>
+              </li>
+            </ul>
+          </li>
+          <li className="projects-remote-number-li projects-remote-number-li--container">
+            <ul className="projects-remote-number-ul projects-remote-number-ul--arrows">
+              <li className="projects-remote-input" onClick={this.prevProj}>
+                <button className="projects-remote-input-div">
+                  {" "}
+                  <i className="fas fa-chevron-left" />{" "}
+                </button>
+              </li>
+              <li
+                className="projects-remote-input projects-remote-input--ok"
+                onClick={this.ok}
+              >
+                <button className="projects-remote-input-div projects-remote-input-div--ok">
+                  OK
+                </button>
+              </li>
+              <li className="projects-remote-input" onClick={this.nextProj}>
+                <button className="projects-remote-input-div">
+                  {" "}
+                  <i className="fas fa-chevron-right" />{" "}
+                </button>
+              </li>
+            </ul>
+          </li>
+          <li className="projects-remote-number-li projects-remote-number-li--container">
+            <ul className="projects-remote-number-ul projects-remote-number-ul--arrows">
+              <li className="projects-remote-input" onClick={this.down}>
+                <button className="projects-remote-input-div">
+                  {" "}
+                  <i className="fas fa-chevron-down" />{" "}
+                </button>
+              </li>
+            </ul>
+          </li>
+          <li className="projects-remote-number-li">
+            <ul className="projects-remote-number-ul">{liArr.slice(1, 4)}</ul>
+          </li>
+          <li className="projects-remote-number-li">
+            <ul className="projects-remote-number-ul">{liArr.slice(4, 7)}</ul>
+          </li>
+          <li className="projects-remote-number-li">
+            <ul className="projects-remote-number-ul">{liArr.slice(7, 10)}</ul>
+          </li>
+          <li>
+            <ul className="projects-remote-number-ul">{liArr.slice(0, 1)}</ul>
+          </li>
+        </ul>
       </div>
     );
   }
