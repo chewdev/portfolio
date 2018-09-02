@@ -162,7 +162,9 @@ class QA extends React.Component {
         </button>
         <div className={`paper-text paper-text-ql ${this.chromeClass}`}>
           {this.state.currentText ? (
-            <p className="paper-text-answer">{this.state.currentText}</p>
+            <p className={`paper-text-answer ${this.chromeClass}`}>
+              {this.state.currentText}
+            </p>
           ) : (
             ""
           )}
