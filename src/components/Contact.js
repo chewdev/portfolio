@@ -170,125 +170,127 @@ export default class Contact extends React.Component {
           </h3>
         )}
         <LazyLoad offset={600} throttle={25}>
-          <div className={`contact-form`}>
-            {this.state.submitted ? (
-              <ReactTypist
-                avgTypingDelay={30}
-                stdTypingDelay={15}
-                cursor={{ show: false }}
+          <div>
+            <div className={`contact-form`}>
+              {this.state.submitted ? (
+                <ReactTypist
+                  avgTypingDelay={30}
+                  stdTypingDelay={15}
+                  cursor={{ show: false }}
+                >
+                  <div className="show-success">
+                    <h2>Successfully submitted. Thank you for reaching out!</h2>
+                  </div>
+                </ReactTypist>
+              ) : null}
+              <form
+                className={`${this.state.formClass}`}
+                onSubmit={this.onSubmit}
               >
-                <div className="show-success">
-                  <h2>Successfully submitted. Thank you for reaching out!</h2>
+                <h1 className="contact-form-title">Contact</h1>
+                <div className="contact-form-label-error-div">
+                  <label className="contact-form-label" htmlFor="contactname">
+                    Full Name:
+                  </label>
+                  {this.state.nameError ? (
+                    <div className="contact-form-error">Name is required</div>
+                  ) : null}
                 </div>
-              </ReactTypist>
-            ) : null}
-            <form
-              className={`${this.state.formClass}`}
-              onSubmit={this.onSubmit}
-            >
-              <h1 className="contact-form-title">Contact</h1>
-              <div className="contact-form-label-error-div">
-                <label className="contact-form-label" htmlFor="contactname">
-                  Full Name:
-                </label>
-                {this.state.nameError ? (
-                  <div className="contact-form-error">Name is required</div>
-                ) : null}
-              </div>
-              <div className="contact-form-input-div">
-                <input
-                  className="contact-form-contactinput"
-                  type="text"
-                  name="contactname"
-                  value={this.state.contactName}
-                  onChange={this.setContactName}
+                <div className="contact-form-input-div">
+                  <input
+                    className="contact-form-contactinput"
+                    type="text"
+                    name="contactname"
+                    value={this.state.contactName}
+                    onChange={this.setContactName}
+                  />
+                </div>
+                <div className="contact-form-label-error-div">
+                  <label className="contact-form-label" htmlFor="contactemail">
+                    E-mail:
+                  </label>
+                  {this.state.emailError ? (
+                    <div className="contact-form-error">
+                      Please input a valid e-mail
+                    </div>
+                  ) : null}
+                </div>
+                <div className="contact-form-input-div">
+                  <input
+                    className="contact-form-contactinput"
+                    type="text"
+                    name="contactemail"
+                    value={this.state.contactEmail}
+                    onChange={this.setContactEmail}
+                  />
+                </div>
+                <div className="contact-form-label-error-div">
+                  <label className="contact-form-label" htmlFor="comments">
+                    Comments:
+                  </label>
+                  {this.state.commentCount > 235 ? (
+                    <div className="contact-form-error">
+                      {255 - this.state.commentCount} characters left
+                    </div>
+                  ) : null}
+                </div>
+                <textarea
+                  className="contact-form-comments-area"
+                  name="comments"
+                  value={this.state.comments}
+                  onChange={this.setComments}
                 />
-              </div>
-              <div className="contact-form-label-error-div">
-                <label className="contact-form-label" htmlFor="contactemail">
-                  E-mail:
+                <label className="contact-form-label" htmlFor="contactpurpose">
+                  Reason For Contact:
                 </label>
-                {this.state.emailError ? (
-                  <div className="contact-form-error">
-                    Please input a valid e-mail
-                  </div>
-                ) : null}
-              </div>
-              <div className="contact-form-input-div">
-                <input
+                <select
+                  onChange={this.setSelectOption}
+                  value={this.state.selectedOption}
                   className="contact-form-contactinput"
-                  type="text"
-                  name="contactemail"
-                  value={this.state.contactEmail}
-                  onChange={this.setContactEmail}
+                  name="contactpurpose"
+                >
+                  <option className="contact-form-reason-option" value="Say Hi">
+                    {" "}
+                    Say Hi{" "}
+                  </option>
+                  <option
+                    className="contact-form-reason-option"
+                    value="Let's Chat"
+                  >
+                    {" "}
+                    Let's Chat{" "}
+                  </option>
+                  <option
+                    className="contact-form-reason-option"
+                    value="Freelance Work"
+                  >
+                    {" "}
+                    Freelance Opportunity{" "}
+                  </option>
+                  <option
+                    className="contact-form-reason-option"
+                    value="Job Opportunity"
+                  >
+                    {" "}
+                    Job Opportunity{" "}
+                  </option>
+                </select>
+                <input
+                  className="contact-form-submit"
+                  type="submit"
+                  value="Submit"
                 />
+              </form>
+            </div>
+            <div className="contact-form-whiteboard-bottom">
+              <div className="eraser">Expo</div>
+              <div className="marker">
+                <div className="marker-body" />
+                <div className="marker-cap" />
               </div>
-              <div className="contact-form-label-error-div">
-                <label className="contact-form-label" htmlFor="comments">
-                  Comments:
-                </label>
-                {this.state.commentCount > 235 ? (
-                  <div className="contact-form-error">
-                    {255 - this.state.commentCount} characters left
-                  </div>
-                ) : null}
-              </div>
-              <textarea
-                className="contact-form-comments-area"
-                name="comments"
-                value={this.state.comments}
-                onChange={this.setComments}
-              />
-              <label className="contact-form-label" htmlFor="contactpurpose">
-                Reason For Contact:
-              </label>
-              <select
-                onChange={this.setSelectOption}
-                value={this.state.selectedOption}
-                className="contact-form-contactinput"
-                name="contactpurpose"
-              >
-                <option className="contact-form-reason-option" value="Say Hi">
-                  {" "}
-                  Say Hi{" "}
-                </option>
-                <option
-                  className="contact-form-reason-option"
-                  value="Let's Chat"
-                >
-                  {" "}
-                  Let's Chat{" "}
-                </option>
-                <option
-                  className="contact-form-reason-option"
-                  value="Freelance Work"
-                >
-                  {" "}
-                  Freelance Opportunity{" "}
-                </option>
-                <option
-                  className="contact-form-reason-option"
-                  value="Job Opportunity"
-                >
-                  {" "}
-                  Job Opportunity{" "}
-                </option>
-              </select>
-              <input
-                className="contact-form-submit"
-                type="submit"
-                value="Submit"
-              />
-            </form>
+            </div>
           </div>
         </LazyLoad>
-        <div className="contact-form-whiteboard-bottom">
-          <div className="eraser">Expo</div>
-          <div className="marker">
-            <div className="marker-body" />
-            <div className="marker-cap" />
-          </div>
-        </div>
       </div>
     );
   }
