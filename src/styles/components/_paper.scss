@@ -29,7 +29,7 @@
 }
 
 .paper-header {
-  margin: 0.5rem 0 0.5rem 10rem;
+  margin: 0.5rem 0 1.2rem 10rem;
   line-height: 1;
 }
 
@@ -39,6 +39,10 @@
   font-size: 1.8rem;
   line-height: 0.98;
 
+  &-mtop {
+    margin-top: 1rem;
+  }
+
   &--chrome {
     line-height: 0.9;
   }
@@ -46,6 +50,10 @@
   &-ql {
     margin-top: 0;
     padding-top: 0.8rem;
+  }
+
+  &-answer {
+    margin-top: 0.5rem;
   }
 }
 

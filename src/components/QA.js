@@ -4,42 +4,16 @@ import Typist from "react-typist";
 class QA extends React.Component {
   constructor(props) {
     super(props);
-    // this.qA = [
-    //   {
-    //     question: "What do you do?",
-    //     answer: "Full Stack Web Development."
-    //   },
-    //   {
-    //     question: "What are your hobbies?",
-    //     answer:
-    //       "Coding is more than just a profession to me, it's also a hobby. I like tinkering with Arduino and want to get better working with IoT. I love traveling and baseball just as much and am currently working towards visiting all 30 MLB stadiums!"
-    //   },
-    //   {
-    //     question: "What technologies do you have experience with?",
-    //     answer:
-    //       "JS, React, Node, Express, MongoDB, SQL, Sass, Bootstrap, Materialize, Redux, GraphQL, ..."
-    //   },
-    //   {
-    //     question: "What is your favorite project so far?",
-    //     answer:
-    //       "This portfolio is my favorite web development project so far. I enjoy building in general, but this site has pushed me to really span the spectrum of web development to design, build and deploy it live."
-    //   },
-    //   {
-    //     question: "Where do you see yourself in 5 years?",
-    //     answer:
-    //       "I love web development, but I have a wide range of interests in coding. Ideally I would be working with a company where it's possible to transfer to or work with other divisions of programming, such as IoT and robotics."
-    //   },
-    //   {
-    //     question: "Dogs or cats?",
-    //     answer: "Definitely dogs."
-    //   }
-    // ];
     this.qA = [];
     this.state = {
       items: [],
       currentText: "",
       textInput: "",
-      questionArr: []
+      questionArr: [],
+      qaPlaceholder:
+        "Ask your questions here. Click a suggestion to get the answer or press enter to ask the top suggestion.",
+      hasBeenChanged: false,
+      hasBeenAsked: false
     };
     this.onTextInputChange = this.onTextInputChange.bind(this);
     this.howManyMatches = this.howManyMatches.bind(this);
@@ -75,6 +49,13 @@ class QA extends React.Component {
     if (e.target.value.match(/[\n]/g)) {
       this.getAnswer();
       return;
+    }
+    if (!this.state.hasBeenChanged) {
+      const hasBeenChanged = true;
+      this.setState({
+        hasBeenChanged,
+        qaPlaceholder: "Do you have a question for me?"
+      });
     }
     const textInput = e.target.value.toLowerCase();
     if (textInput.length === 0) {
@@ -137,25 +118,31 @@ class QA extends React.Component {
     this.setState({
       currentText: answer,
       questionArr: [],
-      textInput: answerObj[0].question
+      textInput: answerObj[0].question,
+      hasBeenAsked: true,
+      qaPlaceholder: "Have a different question?"
     });
   }
 
   render() {
     return (
-      <div style={{ height: "45.5rem" }}>
+      <div style={{ height: "45rem" }}>
+        <label className="paper-text" htmlFor="knowme">
+          Get to know me:
+        </label>
         <textarea
-          className={`paper-text ${this.chromeClass}`}
+          name="knowme"
+          className={`paper-text ${this.chromeClass} paper-text-mtop`}
           style={{
             background: "inherit",
             border: "none",
             fontFamily: "inherit",
-            height: "11.5rem",
+            height: "11.2rem",
             width: "27rem",
             resize: "none",
             overflow: "hidden"
           }}
-          placeholder="Get to know me: Click here and type your question. Click a suggestion to get the answer."
+          placeholder={this.state.qaPlaceholder}
           onChange={this.onTextInputChange}
           value={this.state.textInput}
         />
@@ -174,7 +161,11 @@ class QA extends React.Component {
           Ask
         </button>
         <div className={`paper-text paper-text-ql ${this.chromeClass}`}>
-          {this.state.currentText ? <p>{this.state.currentText}</p> : ""}
+          {this.state.currentText ? (
+            <p className="paper-text-answer">{this.state.currentText}</p>
+          ) : (
+            ""
+          )}
           {this.state.questionArr.length > 0 ? (
             <ul>
               {this.state.questionArr
@@ -201,7 +192,9 @@ class QA extends React.Component {
               avgTypingDelay={10}
               stdTypingDelay={10}
               cursor={{ show: false }}
-            ><p>No matching questions</p></Typist>
+            >
+              <p>No matching questions</p>
+            </Typist>
           ) : null}
         </div>
       </div>
