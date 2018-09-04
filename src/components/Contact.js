@@ -22,7 +22,9 @@ export default class Contact extends React.Component {
       submitError: false,
       commentCount: 0,
       emailError: false,
-      nameError: false
+      nameError: false,
+      hadNameError: false,
+      hadEmailError: false
     };
 
     this.setContactName = this.setContactName.bind(this);
@@ -35,6 +37,16 @@ export default class Contact extends React.Component {
 
   setContactName(e) {
     const contactName = e.target.value;
+
+    if (this.state.hadNameError) {
+      var nameError = false;
+      if (contactName === "") {
+        nameError = true;
+      } else {
+        nameError = false;
+      }
+    }
+
     if (
       !contactName.slice(contactName.length - 1).match(/[a-zA-Z ]/) &&
       contactName !== ""
@@ -44,15 +56,25 @@ export default class Contact extends React.Component {
     if (contactName.length > 50) {
       return;
     }
-    this.setState({ contactName });
+    this.setState({ contactName, nameError });
   }
 
   setContactEmail(e) {
-    const contactEmail = e.target.value;
+    const email = e.target.value;
+    let emailError = false;
+    if (this.state.hadEmailError) {
+      var isValidEmail = this.validateEmail(email);
+      if (isValidEmail) {
+        emailError = false;
+      } else {
+        emailError = true;
+      }
+    }
+    const contactEmail = email;
     if (contactEmail.length > 254) {
       return;
     }
-    this.setState({ contactEmail });
+    this.setState({ contactEmail, emailError });
   }
 
   setComments(e) {
@@ -79,18 +101,18 @@ export default class Contact extends React.Component {
     const submittedEmail = e.target.contactemail.value;
     const submittedComments = e.target.comments.value;
     const submittedSelectedOption = e.target.contactpurpose.value;
-    let emailError = false;
-    let nameError = false;
 
     if (!this.validateEmail(submittedEmail)) {
-      emailError = true;
+      var emailError = true;
+      var hadEmailError = true;
     }
     if (submittedName.length < 1) {
-      nameError = true;
+      var nameError = true;
+      var hadNameError = true;
     }
 
     if (nameError || emailError) {
-      this.setState({ emailError, nameError });
+      this.setState({ emailError, nameError, hadEmailError, hadNameError });
       return;
     }
 
