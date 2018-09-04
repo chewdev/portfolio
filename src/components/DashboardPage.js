@@ -4,6 +4,7 @@ import Header from "./Header";
 import AboutMe from "./AboutMe";
 import Projects from "./Projects";
 import Contact from "./Contact";
+import Footer from "./Footer";
 import Walker from "./Walker";
 import LazyLoad from "react-lazy-load";
 
@@ -26,6 +27,7 @@ const DashboardPage = () => (
     </div>
     <div className="threshold-transition" />
     <Contact />
+    <Footer />
   </div>
 );
 
