@@ -132,6 +132,7 @@ class QA extends React.Component {
         </label>
         <textarea
           name="knowme"
+          id="knowme"
           className={`paper-text ${this.chromeClass} paper-text-mtop`}
           style={{
             background: "inherit",

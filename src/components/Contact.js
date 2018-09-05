@@ -218,6 +218,7 @@ export default class Contact extends React.Component {
                   <input
                     className="contact-form-contactinput"
                     type="text"
+                    id="contactname"
                     name="contactname"
                     value={this.state.contactName}
                     onChange={this.setContactName}
@@ -238,6 +239,7 @@ export default class Contact extends React.Component {
                     className="contact-form-contactinput"
                     type="text"
                     name="contactemail"
+                    id="contactemail"
                     value={this.state.contactEmail}
                     onChange={this.setContactEmail}
                   />
@@ -255,6 +257,7 @@ export default class Contact extends React.Component {
                 <textarea
                   className="contact-form-comments-area"
                   name="comments"
+                  id="comments"
                   value={this.state.comments}
                   onChange={this.setComments}
                 />
