@@ -49,7 +49,12 @@ const transporter = nodemailer.createTransport({
 app.use(express.static(publicPath));
 
 app.post("/contact", (req, res) => {
-  const data = JSON.parse(req.body);
+  let data = {};
+  try {
+    data = JSON.parse(req.body);
+  } catch (error) {
+    return res.status(400).json({ isJSON: false });
+  }
 
   const { errors, isValid } = validateContactInput(data);
 
