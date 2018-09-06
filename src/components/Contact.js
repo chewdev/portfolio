@@ -1,6 +1,7 @@
 import React from "react";
 import LazyLoad from "react-lazy-load";
 import ReactTypist from "react-typist";
+import { isEmail } from "validator";
 
 export default class Contact extends React.Component {
   constructor(props) {
@@ -32,7 +33,6 @@ export default class Contact extends React.Component {
     this.setComments = this.setComments.bind(this);
     this.setSelectOption = this.setSelectOption.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
-    this.validateEmail = this.validateEmail.bind(this);
   }
 
   setContactName(e) {
@@ -61,20 +61,20 @@ export default class Contact extends React.Component {
 
   setContactEmail(e) {
     const email = e.target.value;
+    if (email.length > 254) {
+      return;
+    }
     let emailError = false;
     if (this.state.hadEmailError) {
-      var isValidEmail = this.validateEmail(email);
+      var isValidEmail = isEmail(email);
       if (isValidEmail) {
         emailError = false;
       } else {
         emailError = true;
       }
     }
-    const contactEmail = email;
-    if (contactEmail.length > 254) {
-      return;
-    }
-    this.setState({ contactEmail, emailError });
+
+    this.setState({ contactEmail: email, emailError });
   }
 
   setComments(e) {
@@ -90,10 +90,6 @@ export default class Contact extends React.Component {
     this.setState({ selectedOption: e.target.value });
   }
 
-  validateEmail(email) {
-    return /^.+@.+\..+$/.test(email);
-  }
-
   onSubmit(e) {
     e.preventDefault();
 
@@ -102,7 +98,7 @@ export default class Contact extends React.Component {
     const submittedComments = e.target.comments.value;
     const submittedSelectedOption = e.target.contactpurpose.value;
 
-    if (!this.validateEmail(submittedEmail)) {
+    if (!isEmail(submittedEmail)) {
       var emailError = true;
       var hadEmailError = true;
     }
