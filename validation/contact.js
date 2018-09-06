@@ -49,6 +49,14 @@ module.exports = function validateContactInput(data) {
     errors.select = "An option must be selected";
   }
 
+  if (
+    !["Say Hi", "Let's Chat", "Freelance Work", "Job Opportunity"].includes(
+      submittedSelectedOption
+    )
+  ) {
+    errors.select = "That is not a valid option";
+  }
+
   if (submittedComments) {
     if (!Validator.isLength(submittedComments, { min: 1, max: 255 })) {
       errors.comments = "Comments must be less than 255 characters";
