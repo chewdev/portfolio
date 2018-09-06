@@ -6,6 +6,8 @@ const publicPath = path.join(__dirname, "..", "public");
 const port = process.env.PORT || 3000;
 const mysql = require("mysql");
 
+const validateContactInput = require("../validation/contact");
+
 require("dotenv").config({ path: ".env.development" });
 
 app.use(function(req, res, next) {
@@ -48,6 +50,13 @@ app.use(express.static(publicPath));
 
 app.post("/contact", (req, res) => {
   const data = JSON.parse(req.body);
+
+  const { errors, isValid } = validateContactInput(data);
+
+  if (!isValid) {
+    return res.status(400).json(errors);
+  }
+
   const {
     submittedName,
     submittedEmail,
