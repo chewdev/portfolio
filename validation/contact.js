@@ -33,6 +33,10 @@ module.exports = function validateContactInput(data) {
     errors.email = "Email field is required";
   }
 
+  if (!/^[a-zA=Z ]+$/.test(submittedName)) {
+    errors.name = "Name must only contain letters and spaces";
+  }
+
   if (!Validator.isLength(submittedName, { min: 1, max: 50 })) {
     errors.name = "Name must be less than 50 characters";
   }
