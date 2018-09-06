@@ -96,8 +96,7 @@ app.post("/contact", (req, res) => {
       console.log(err);
     } else {
       const accepted = !!data.accepted;
-      const acceptedJSON = JSON.stringify({ accepted });
-      res.json(acceptedJSON);
+      res.json({ accepted });
     }
   });
 });

@@ -155,20 +155,19 @@ export default class Contact extends React.Component {
       submittedSelectedOption
     })
       .then(data => {
-        const parsedData = JSON.parse(data);
         //Server should send back accepted as true if email was successful
 
         //If error sending email, set submitError to true to show error message to user
         //Also cancel removal of form and re-display form under error message to allow
         //user to attempt to send form again.
-        if (!parsedData.accepted) {
+        if (!data.accepted) {
           if (this.timeout) {
             clearTimeout(this.timeout);
           }
           this.setState({ submitError: true, formClass: "" });
         } else {
           //Set submitted to true in order to show success message to user
-          this.setState({ submitted: true });
+          this.setState({ submitted: true, submitError: false });
         }
       })
       .catch(error => {
