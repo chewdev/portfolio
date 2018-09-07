@@ -67,10 +67,4 @@ module.exports = function validateContactInput(data) {
     errors,
     isValid: isEmpty(errors)
   };
-
-  //check if input is json, if not reject with error
-  // const parsedData = JSON.parse(data);
-  // if (typeof parsedData !== 'object') {
-  //   return res.status(404).json({ error: 'Improper data received' });
-  // }
 };

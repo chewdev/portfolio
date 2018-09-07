@@ -53,13 +53,13 @@ app.post("/contact", (req, res) => {
   try {
     data = JSON.parse(req.body);
   } catch (error) {
-    return res.status(400).json({ isJSON: false });
+    return res.status(400).json({ isJSON: false, accepted: false });
   }
 
   const { errors, isValid } = validateContactInput(data);
 
   if (!isValid) {
-    return res.status(400).json(errors);
+    return res.status(400).json({ ...errors, accepted: false });
   }
 
   const {

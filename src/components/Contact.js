@@ -25,7 +25,8 @@ export default class Contact extends React.Component {
       emailError: false,
       nameError: false,
       hadNameError: false,
-      hadEmailError: false
+      hadEmailError: false,
+      contactError: ""
     };
 
     this.setContactName = this.setContactName.bind(this);
@@ -160,7 +161,10 @@ export default class Contact extends React.Component {
           if (this.timeout) {
             clearTimeout(this.timeout);
           }
-          this.setState({ submitError: true, formClass: "" });
+          const contactError = data.alreadysubmitted
+            ? data.alreadysubmitted
+            : "";
+          this.setState({ submitError: true, formClass: "", contactError });
         } else {
           //Set submitted to true in order to show success message to user
           this.setState({ submitted: true, submitError: false });
@@ -179,7 +183,9 @@ export default class Contact extends React.Component {
       <div id="contact" className="contact-section">
         {this.state.submitError && (
           <h3 className="contact-error">
-            There was an error submitting the form, please try again.
+            {this.state.contactError
+              ? this.state.contactError
+              : "There was an error submitting the form, please try again."}
           </h3>
         )}
         <LazyLoad offset={600} throttle={25}>
