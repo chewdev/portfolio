@@ -70,6 +70,22 @@ app.post("/contact", (req, res) => {
   } = data;
 
   connection.query(
+    "SELECT * FROM submitted_emails WHERE ?",
+    {
+      email: submittedEmail
+    },
+    function(err, results) {
+      if (results.length > 4) {
+        return res.status(400).json({
+          alreadysubmitted:
+            "You have submitted a contact too many times, please contact directly.",
+          accepted: false
+        });
+      }
+    }
+  );
+
+  connection.query(
     "INSERT INTO submitted_emails SET ?",
     {
       full_name: submittedName,
