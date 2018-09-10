@@ -53,12 +53,14 @@ app.post("/contact", (req, res) => {
   try {
     data = JSON.parse(req.body);
   } catch (error) {
+    console.log(error);
     return res.status(400).json({ isJSON: false, accepted: false });
   }
 
   const { errors, isValid } = validateContactInput(data);
 
   if (!isValid) {
+    console.log(errors);
     return res.status(400).json({ ...errors, accepted: false });
   }
 
@@ -76,6 +78,7 @@ app.post("/contact", (req, res) => {
     },
     function(err, results) {
       if (results.length > 4) {
+        console.log("results length: " + results.length);
         return res.status(400).json({
           alreadysubmitted:
             "You have submitted a contact too many times, please contact directly.",
@@ -110,6 +113,7 @@ app.post("/contact", (req, res) => {
   transporter.sendMail(mailOptions, function(err, data) {
     if (err) {
       console.log(err);
+      return res.status(400).json({ mailnotsent: "Unable to send email" });
     } else {
       const accepted = !!data.accepted;
       res.json({ accepted });
