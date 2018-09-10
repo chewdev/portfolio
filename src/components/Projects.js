@@ -10,7 +10,7 @@ class Projects extends React.Component {
         alt: "Screenshot of Budg-It project homepage",
         title: "React Budg-It App",
         description:
-          "Budg-It app is a place where you can easily track all your expenses and income to determine a budget. Quickly search expenses by text and date and sort by date or amount. This app was built while learning React and Redux. It can be used with or without logging in. Logging in is simple with Google Auth from Firebase. By logging in, you can store your data in the database hosted on Firebase.",
+          "Budg-It app is a place where you can easily track all your expenses and income to determine a budget. Quickly search expenses by text and date and sort by date or amount. This app was my introduction to using Redux in a React project. Learned many other key skills while building this app including: testing with Jest and Enzyme, working with webpack, using Sass CSS preprocessor, BEM CSS convention, using Firebase with Google Auth, deploying to Heroku and much more.",
         tools: [
           "React",
           "Redux",
@@ -27,8 +27,17 @@ class Projects extends React.Component {
         alt: "Screenshot of Yelp Camp project homepage",
         title: "Yelp Camp App",
         description:
-          "Yelp Camp is an app for posting and commenting on campgrounds. Users can sign up and login to add campgrounds and comments that are stored in the MongoDB database. This app was built following a course on Udemy by Colt Steele. Built with Vanilla JS, Node, Express and MongoDB.",
-        tools: ["Node", "MongoDB", "Express", "JavaScript", "HTML5", "CSS3"],
+          "Yelp Camp is an app for posting and commenting on campgrounds. Users can sign up and login to add campgrounds and comments that are stored in the MongoDB database. This app was built following a course on Udemy by Colt Steele. This was my first introduction to Node, Express, Passport, MongoDB and Mongoose.",
+        tools: [
+          "Node",
+          "MongoDB",
+          "Express",
+          "JavaScript",
+          "HTML5",
+          "CSS3",
+          "Passport",
+          "Mongoose"
+        ],
         link: "https://polar-ridge-72654.herokuapp.com",
         channelName: "YCA"
       },
@@ -37,7 +46,7 @@ class Projects extends React.Component {
         alt: "Screenshot of Indecision App project",
         title: "Indecision App",
         description:
-          "Indecision App is a simple CRUD application that allows a user to add and remove items to a list. User can then allow the app to make a decision for them. Built with React.",
+          "Indecision App is a simple CRUD application that allows a user to add and remove items to a list. User can then allow the app to make a decision for them. This was built while learning the basics of React and implementing of Local Storage.",
         tools: ["React", "JavaScript", "HTML5", "CSS3"],
         link: "https://github.com/chewdev/react-indecision-app",
         channelName: "IDA"
@@ -57,7 +66,7 @@ class Projects extends React.Component {
         alt: "Screenshot of this portfolio's homepage",
         title: "Portfolio",
         description:
-          "This site was built from scratch using Node, React, Express and MySQL. Built a strong foundation in responsive web design with HTML and CSS while developing this site. Used Google's Gmail API and Nodemailer to connect contact form to email and practiced form validation. Most importantly, this site was essential in building my comfort level working with state management and React lifecycle methods and improving performance.",
+          "This site was built from scratch using Node, React, Express and MySQL. I built a strong foundation in responsive web design with HTML and CSS while developing this site. Used Google's Gmail API and Nodemailer to connect contact form to email and practiced form validation. Most importantly, this site was essential in building my comfort level with working on the full stack without help or guidance. I designed it, built the frontend and backend from scratch and deployed to Digital Ocean Droplet. Working with a DO Droplet gave me a good experience in learning to SSH into a server, set up an environment and deploy on Ubuntu.",
         tools: [
           "Node",
           "MongoDB",
@@ -68,7 +77,7 @@ class Projects extends React.Component {
           "MySQL"
         ],
         link: "/",
-        channelName: "YCA"
+        channelName: "CEP"
       },
       {
         imgSrc: "/images/now-brewing.jpg",
