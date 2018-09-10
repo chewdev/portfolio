@@ -33,7 +33,7 @@ module.exports = function validateContactInput(data) {
     errors.email = "Email field is required";
   }
 
-  if (!/^[a-zA=Z ]+$/.test(submittedName)) {
+  if (!/^[a-zA-Z ]+$/.test(submittedName)) {
     errors.name = "Name must only contain letters and spaces";
   }
 
