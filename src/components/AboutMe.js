@@ -1,108 +1,21 @@
 import React from "react";
-import {
-  JavaScriptSVG,
-  BootstrapSVG,
-  CSSSVG,
-  GitSVG,
-  GithubSVG,
-  GraphQLSVG,
-  HerokuSVG,
-  HTMLSVG,
-  JQuerySVG,
-  MongoDBSVG,
-  MySQLSVG,
-  NodeSVG,
-  NPMSVG,
-  ReactSVG,
-  ReduxSVG,
-  SassSVG,
-  WebpackSVG
-} from "./SVGs";
+import skills from "../data/skills";
 
 class AboutMe extends React.Component {
   constructor(props) {
     super(props);
 
-    this.skills = [
-      {
-        comp: <JavaScriptSVG color={"#F7DF1E"} />,
-        color: "#F7DF1E"
-      },
-      {
-        comp: <BootstrapSVG color={"#563D7C"} />,
-        color: "#563D7C"
-      },
-      {
-        comp: <CSSSVG color={"#1572B6"} />,
-        color: "#1572B6"
-      },
-      {
-        comp: <GitSVG color={"#F05032"} />,
-        color: "#F05032"
-      },
-      {
-        comp: <GithubSVG color={"#181717"} />,
-        color: "#181717"
-      },
-      {
-        comp: <GraphQLSVG color={"#E10098"} />,
-        color: "#E10098"
-      },
-      {
-        comp: <HerokuSVG color={"#430098"} />,
-        color: "#430098"
-      },
-      {
-        comp: <HTMLSVG color={"#E34F26"} />,
-        color: "#E34F26"
-      },
-      {
-        comp: <JQuerySVG color={"#0769AD"} />,
-        color: "#0769AD"
-      },
-      {
-        comp: <MongoDBSVG color={"#47A248"} />,
-        color: "#47A248"
-      },
-      {
-        comp: <MySQLSVG color={"#4479A1"} />,
-        color: "#4479A1"
-      },
-      {
-        comp: <NodeSVG color={"#339933"} />,
-        color: "#339933"
-      },
-      {
-        comp: <NPMSVG color={"#CB3837"} />,
-        color: "#CB3837"
-      },
-      {
-        comp: <ReactSVG color={"#61DAFB"} />,
-        color: "#61DAFB"
-      },
-      {
-        comp: <ReduxSVG color={"#764ABC"} />,
-        color: "#764ABC"
-      },
-      {
-        comp: <SassSVG color={"#CC6699"} />,
-        color: "#CC6699"
-      },
-      {
-        comp: <WebpackSVG color={"#8DD6F9"} />,
-        color: "#8DD6F9"
-      }
-    ];
-
     this.state = {
       skillsInd: 0
     };
+
+    this.skillsInterval = null;
   }
 
   componentDidMount() {
-    setInterval(() => {
+    this.skillsInterval = setInterval(() => {
       this.setState(prevState => {
-        if (prevState.skillsInd === this.skills.length - 1) {
+        if (prevState.skillsInd === skills.length - 1) {
           return { skillsInd: 0 };
         }
         return { skillsInd: prevState.skillsInd + 1 };
@@ -110,12 +23,16 @@ class AboutMe extends React.Component {
     }, 1500);
   }
 
+  componentWillUnmount() {
+    clearInterval(this.skillsInterval);
+  }
+
   render() {
     const ipadStyles = {
-      background: this.skills[this.state.skillsInd].color
+      background: skills[this.state.skillsInd].color
     };
     return (
-      <div className="about-me-layout" id="about-me">
+      <section className="about-me-layout" id="about-me">
         <div className="about-me-resize-container">
           <div className="about-me-container">
             <h2 className="about-me-header">About Me</h2>
@@ -151,7 +68,7 @@ class AboutMe extends React.Component {
             <h2>Skills</h2>
             <div className="table-container">
               <div className="tablet" style={ipadStyles}>
-                {this.skills[this.state.skillsInd].comp}
+                {skills[this.state.skillsInd].comp}
               </div>
             </div>
           </div>
@@ -164,7 +81,7 @@ class AboutMe extends React.Component {
             </div>
           </div>
         </div>
-      </div>
+      </section>
     );
   }
 }
