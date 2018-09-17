@@ -53,14 +53,19 @@ export default class Contact extends React.Component {
 
   setContactEmail(e) {
     const contactEmail = e.target.value;
+    // Emails must be less than 254 chars
     if (contactEmail.length > 254) {
       return;
     }
+    // If user tried to submit an invalid email and current input is invalid
+    // Show email error message
     if (this.state.hadEmailError && !isEmail(contactEmail)) {
       this.setState({ contactEmail, emailError: true });
       return;
     }
 
+    // Don't show error message if user hasn't tried to submit form
+    // or if current email input is valid
     this.setState({ contactEmail, emailError: false });
   }
 
@@ -84,21 +89,26 @@ export default class Contact extends React.Component {
     const submittedEmail = e.target.contactemail.value;
     const submittedComments = e.target.comments.value;
     const submittedSelectedOption = e.target.contactpurpose.value;
-
+    let emailError = false;
+    let hadEmailError = false;
+    let nameError = false;
+    let hadNameError = false;
+    // Validate input
     if (!isEmail(submittedEmail)) {
-      var emailError = true;
-      var hadEmailError = true;
+      emailError = true;
+      hadEmailError = true;
     }
     if (submittedName.length < 1) {
-      var nameError = true;
-      var hadNameError = true;
+      nameError = true;
+      hadNameError = true;
     }
-
+    // If errors, show errors and return
     if (nameError || emailError) {
       this.setState({ emailError, nameError, hadEmailError, hadNameError });
       return;
     }
 
+    // If valid, set submitted values and begin fading form
     this.setState({
       submittedName,
       submittedEmail,
@@ -111,12 +121,12 @@ export default class Contact extends React.Component {
       emailError,
       nameError
     });
-    const that = this;
+
+    // Fading form takes 1 second, afterwards we want to keep it hidden
     this.timeout = setTimeout(() => {
-      console.log(that);
       console.log(this);
-      that.setState({ formClass: "hide-form" });
-      that.timeout = null;
+      this.setState({ formClass: "hide-form" });
+      this.timeout = null;
     }, 1000);
 
     // Method to send POST request to server
@@ -127,10 +137,7 @@ export default class Contact extends React.Component {
         headers: {
           "Content-Type": "application/json"
         }
-      }).then(response => {
-        const data = response.json();
-        return data;
-      });
+      }).then(data => data.json());
     };
 
     // Send input data from contact form to the POST route of '/contact'
@@ -141,25 +148,28 @@ export default class Contact extends React.Component {
       submittedSelectedOption
     })
       .then(data => {
-        //Server should send back accepted as true if email was successful
-
-        //If error sending email, set submitError to true to show error message to user
-        //Also cancel removal of form and re-display form under error message to allow
-        //user to attempt to send form again.
+        // If successful request/response, but data sent was not accepted
         if (!data.accepted) {
+          // If contact form hasn't been hidden, cancel timeout and don't hide form
           if (this.timeout) {
             clearTimeout(this.timeout);
           }
+          // If user's email has already submitted contact form 5 times (5 entries in DB)
+          // data.alreadysubmitted should be
+          // "You have submitted a contact too many times, please contact directly."
+          // Show this error to the user
           const contactError = data.alreadysubmitted
             ? data.alreadysubmitted
             : "";
           this.setState({ submitError: true, formClass: "", contactError });
         } else {
-          //Set submitted to true in order to show success message to user
+          // Successfully submitted contact form
+          // Show success message to user
           this.setState({ submitted: true, submitError: false });
         }
       })
       .catch(error => {
+        // If there's an error, cancel hiding of form in timeout and show submit error
         if (this.timeout) {
           clearTimeout(this.timeout);
         }

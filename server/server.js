@@ -1,14 +1,12 @@
 const path = require("path");
 const express = require("express");
-const nodemailer = require("nodemailer");
 const app = express();
 const publicPath = path.join(__dirname, "..", "public");
 const port = process.env.PORT || 3000;
-const mysql = require("mysql");
+let connection = require("./dbconnection");
+let transporter = require("./mailtransport");
 
 const validateContactInput = require("../validation/contact");
-
-require("dotenv").config({ path: ".env.development" });
 
 app.use(function(req, res, next) {
   let data = "";
@@ -21,29 +19,6 @@ app.use(function(req, res, next) {
     req.body = data;
     next();
   });
-});
-
-const connection = mysql.createConnection({
-  host: process.env.DATABASE_HOST,
-  user: process.env.DATABASE_USER,
-  password: process.env.DATABASE_PASSWORD,
-  database: "portfolio"
-});
-
-const transporter = nodemailer.createTransport({
-  host: "smtp.gmail.com",
-  service: "gmail",
-  auth: {
-    type: "OAuth2",
-    user: process.env.SEND_EMAIL,
-    clientId: process.env.GOOGLE_CLIENT_ID,
-    clientSecret: process.env.GOOGLE_SECRET,
-    refreshToken: process.env.GOOGLE_REFRESH,
-    accessToken: process.env.GOOGLE_ACCESS
-  },
-  tls: {
-    rejectUnauthorized: false
-  }
 });
 
 app.use(express.static(publicPath));
@@ -84,8 +59,7 @@ app.post("/contact", (req, res) => {
     },
     function(err, results) {
       // If user has already contacted 5 times, return error
-      if (results.length > 4) {
-        console.log("results length: " + results.length);
+      if (results && results.length > 4) {
         return res.status(400).json({
           alreadysubmitted:
             "You have submitted a contact too many times, please contact directly.",
