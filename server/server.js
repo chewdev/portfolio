@@ -3,8 +3,8 @@ const express = require("express");
 const app = express();
 const publicPath = path.join(__dirname, "..", "public");
 const port = process.env.PORT || 3000;
-let connection = require("./dbconnection");
-let transporter = require("./mailtransport");
+const { connection, checkContactCount, addContact } = require("./dbconnection");
+let { sendMail } = require("./mailtransport");
 
 const validateContactInput = require("../validation/contact");
 
@@ -25,9 +25,8 @@ app.use(express.static(publicPath));
 
 app.post("/contact", (req, res) => {
   let data = {};
-  // Someone could try to send a POST request via e.g. Postman
-  // We want to try to parse data, as it should be a JSON object
-  // If data isn't JSON, catch error and return errors
+  // If data received in body is not JSON object
+  // catch error and return
   try {
     data = JSON.parse(req.body);
   } catch (error) {
@@ -37,74 +36,48 @@ app.post("/contact", (req, res) => {
 
   const { errors, isValid } = validateContactInput(data);
 
-  // If input received is invalid, return errors
+  // Received invalid input
   if (!isValid) {
     console.log(errors);
     return res.status(400).json({ ...errors, accepted: false });
   }
 
-  const {
-    submittedName,
-    submittedEmail,
-    submittedComments,
-    submittedSelectedOption
-  } = data;
-
   // Data received is valid
-  // Check that user has not sent too many contact requests -- Spam prevention
-  connection.query(
-    "SELECT * FROM submitted_emails WHERE ?",
-    {
-      email: submittedEmail
-    },
-    function(err, results) {
-      // If user has already contacted 5 times, return error
-      if (results && results.length > 4) {
-        return res.status(400).json({
-          alreadysubmitted:
-            "You have submitted a contact too many times, please contact directly.",
-          accepted: false
-        });
-      }
-      // Valid new enquiry, insert into database
-      connection.query(
-        "INSERT INTO submitted_emails SET ?",
-        {
-          full_name: submittedName,
-          email: submittedEmail,
-          comments: submittedComments,
-          reason: submittedSelectedOption
-        },
-        function(err, results) {
-          // If there is an error inserting into database,
-          // we still want to try sending email, just log err and continue
-          if (err) {
-            console.log(err);
-          }
-        }
-      );
-
-      const mailOptions = {
-        from: submittedEmail,
-        to: process.env.SEND_EMAIL,
-        subject: `Portfolio Inquiry From ${submittedName}`,
-        html: `<p><strong>Contact Name:</strong> ${submittedName}</p><p><strong>Contact E-mail:</strong> ${submittedEmail}</p><p><strong>Reason For Contact:</strong> ${submittedSelectedOption}</p><p><strong>Comments:</strong> ${submittedComments}</p>`
-      };
-      // Try to send email with contact form information
-      transporter.sendMail(mailOptions, function(err, data) {
-        // If there is an error sending email, return error to user
-        if (err) {
-          console.log(err);
-          return res.status(400).json({ mailnotsent: "Unable to send email" });
-        }
-        // Email successfully sent, return accepted
-        else {
-          const accepted = !!data.accepted;
-          res.json({ accepted });
-        }
+  // Users can only send 5 contact requests, check if limit reached
+  const countCallback = function(err, results) {
+    // If user has already contacted 5 times, return error
+    if (results && results.length > 4) {
+      return res.status(400).json({
+        alreadysubmitted:
+          "You have submitted a contact too many times, please contact directly.",
+        accepted: false
       });
     }
-  );
+
+    // Valid new enquiry, insert into database
+    addContact(data, function(err, results) {
+      // Error inserting into DB
+      // Log error then attempt to send email
+      if (err) {
+        console.log(err);
+      }
+    });
+    // Send email
+    sendMail(data, function(err, data) {
+      // Error sending email
+      if (err) {
+        console.log(err);
+        return res.status(400).json({ mailnotsent: "Unable to send email" });
+      }
+      // Email successfully sent
+      else {
+        const accepted = !!data.accepted;
+        return res.json({ accepted });
+      }
+    });
+  };
+
+  checkContactCount(data.submittedEmail, countCallback);
 });
 
 app.get("/questions", (req, res) => {
