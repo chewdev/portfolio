@@ -4,8 +4,8 @@ import ReactTypist from "react-typist";
 import { isEmail } from "validator";
 
 export default class Contact extends React.Component {
-  constructor(props) {
-    super(props);
+  constructor() {
+    super();
 
     this.timeout = null;
 
@@ -38,44 +38,30 @@ export default class Contact extends React.Component {
 
   setContactName(e) {
     const contactName = e.target.value;
-
-    if (this.state.hadNameError) {
-      var nameError = false;
-      if (contactName === "") {
-        nameError = true;
-      } else {
-        nameError = false;
-      }
-    }
-
-    if (
-      !contactName.slice(contactName.length - 1).match(/[a-zA-Z ]/) &&
-      contactName !== ""
-    ) {
-      return;
-    }
+    // Name must be less than 50 chars
     if (contactName.length > 50) {
       return;
     }
-    this.setState({ contactName, nameError });
+
+    if (this.state.hadNameError && contactName === "") {
+      this.setState({ contactName, nameError: true });
+      return;
+    }
+
+    this.setState({ contactName, nameError: false });
   }
 
   setContactEmail(e) {
-    const email = e.target.value;
-    if (email.length > 254) {
+    const contactEmail = e.target.value;
+    if (contactEmail.length > 254) {
       return;
     }
-    let emailError = false;
-    if (this.state.hadEmailError) {
-      var isValidEmail = isEmail(email);
-      if (isValidEmail) {
-        emailError = false;
-      } else {
-        emailError = true;
-      }
+    if (this.state.hadEmailError && !isEmail(contactEmail)) {
+      this.setState({ contactEmail, emailError: true });
+      return;
     }
 
-    this.setState({ contactEmail: email, emailError });
+    this.setState({ contactEmail, emailError: false });
   }
 
   setComments(e) {
@@ -125,9 +111,12 @@ export default class Contact extends React.Component {
       emailError,
       nameError
     });
+    const that = this;
     this.timeout = setTimeout(() => {
-      this.setState({ formClass: "hide-form" });
-      this.timeout = null;
+      console.log(that);
+      console.log(this);
+      that.setState({ formClass: "hide-form" });
+      that.timeout = null;
     }, 1000);
 
     // Method to send POST request to server
@@ -180,7 +169,7 @@ export default class Contact extends React.Component {
 
   render() {
     return (
-      <div id="contact" className="contact-section">
+      <section id="contact" className="contact-section">
         {this.state.submitError && (
           <h3 className="contact-error">
             {this.state.contactError
@@ -313,7 +302,7 @@ export default class Contact extends React.Component {
             </div>
           </div>
         </LazyLoad>
-      </div>
+      </section>
     );
   }
 }
