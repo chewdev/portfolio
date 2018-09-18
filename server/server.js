@@ -3,7 +3,12 @@ const express = require("express");
 const app = express();
 const publicPath = path.join(__dirname, "..", "public");
 const port = process.env.PORT || 3000;
-const { connection, checkContactCount, addContact } = require("./dbconnection");
+const {
+  connection,
+  checkContactCount,
+  addContact,
+  getIntroQuestions
+} = require("./dbconnection");
 let { sendMail } = require("./mailtransport");
 
 const validateContactInput = require("../validation/contact");
@@ -81,15 +86,22 @@ app.post("/contact", (req, res) => {
 });
 
 app.get("/questions", (req, res) => {
-  connection.query(
-    "SELECT question, answer, search_terms FROM intro_questions",
-    function(error, results, fields) {
-      if (error) {
-        throw error;
-      }
-      res.json(results);
+  getIntroQuestions(function(error, results, fields) {
+    if (error) {
+      console.log(error);
+      res.status(400).json([
+        {
+          question: "Why aren't there more questions?",
+          search_terms:
+            "why are there not more questions what how when if can you",
+          answer:
+            "We are currently having issues reaching Chris. Please try refreshing the page to ask other questions."
+        }
+      ]);
+      return;
     }
-  );
+    res.json(results);
+  });
 });
 
 app.get("*", (req, res) => {

@@ -36,4 +36,16 @@ const addContact = (
   );
 };
 
-module.exports = { connection, checkContactCount, addContact };
+const getIntroQuestions = callback => {
+  connection.query(
+    "SELECT question, answer, search_terms FROM intro_questions",
+    callback
+  );
+};
+
+module.exports = {
+  connection,
+  checkContactCount,
+  addContact,
+  getIntroQuestions
+};
