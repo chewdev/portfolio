@@ -46,6 +46,23 @@ module.exports = env => {
               }
             ]
           })
+        },
+        {
+          test: /\.(jpg|png|svg)$/,
+          use: isProduction
+            ? [
+                {
+                  loader: "file-loader",
+                  options: {
+                    name: "/dist/[path][name]-[hash].[ext]"
+                  }
+                }
+              ]
+            : [
+                {
+                  loader: "url-loader"
+                }
+              ]
         }
       ]
     },

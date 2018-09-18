@@ -124,7 +124,6 @@ export default class Contact extends React.Component {
 
     // Fading form takes 1 second, afterwards we want to keep it hidden
     this.timeout = setTimeout(() => {
-      console.log(this);
       this.setState({ formClass: "hide-form" });
       this.timeout = null;
     }, 1000);
