@@ -1,7 +1,6 @@
-import budgItSS from "../../public/images/budg-it.jpg";
 const projects = [
   {
-    imgSrc: budgItSS,
+    imgSrc: "/images/budg-it.jpg",
     alt: "Screenshot of Budg-It project homepage",
     title: "React Budg-It App",
     description:

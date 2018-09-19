@@ -19,7 +19,8 @@ module.exports = env => {
     entry: ["babel-polyfill", "./src/app.js"],
     output: {
       path: path.join(__dirname, "public", "dist"),
-      filename: "bundle.js"
+      filename: "bundle.js",
+      publicPath: "/assets"
     },
     module: {
       rules: [
@@ -54,7 +55,7 @@ module.exports = env => {
                 {
                   loader: "file-loader",
                   options: {
-                    name: "/dist/[path][name]-[hash].[ext]"
+                    name: "/img/[name].[ext]"
                   }
                 }
               ]
