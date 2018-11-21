@@ -106,14 +106,14 @@ class QA extends React.Component {
       possibleAnsObj.length === 1
         ? possibleAnsObj
         : this.state.questionArr.length > 0
-          ? this.state.questionArr
-          : [
-              {
-                answer:
-                  "No matching questions, please rephrase or ask another question",
-                question: this.state.textInput
-              }
-            ];
+        ? this.state.questionArr
+        : [
+            {
+              answer:
+                "No matching questions, please rephrase or ask another question",
+              question: this.state.textInput
+            }
+          ];
     const answer = answerObj[0].answer;
     this.setState({
       currentText: answer,
@@ -126,7 +126,7 @@ class QA extends React.Component {
 
   render() {
     return (
-      <div style={{ height: "45rem" }}>
+      <div style={{ height: "22.5rem" }}>
         <label className="paper-text" htmlFor="knowme">
           Get to know me:
         </label>
@@ -138,8 +138,8 @@ class QA extends React.Component {
             background: "inherit",
             border: "none",
             fontFamily: "inherit",
-            height: "11.2rem",
-            width: "27rem",
+            height: "5.6rem",
+            width: "13.5rem",
             resize: "none",
             overflow: "hidden"
           }}
@@ -150,13 +150,13 @@ class QA extends React.Component {
         <button
           onClick={this.getAnswer}
           style={{
-            marginLeft: "16rem",
+            marginLeft: "8rem",
             background: "inherit",
             border: "none",
             borderBottom: "1px solid black",
             fontFamily: "inherit",
             color: "inherit",
-            fontSize: "2.2rem"
+            fontSize: "1.1rem"
           }}
         >
           Ask
@@ -190,7 +190,7 @@ class QA extends React.Component {
                 ))}
             </ul>
           ) : this.state.currentText !== "" ? null : this.state.textInput !==
-          "" ? (
+            "" ? (
             <Typist
               avgTypingDelay={10}
               stdTypingDelay={10}

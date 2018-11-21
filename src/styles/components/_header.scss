@@ -1,5 +1,5 @@
 .header {
-  padding-top: 1rem;
+  padding-top: 0.5rem;
   position: fixed;
   top: 0;
   width: 100%;
@@ -7,13 +7,13 @@
 }
 
 .header-spacing {
-  height: 12rem;
+  height: 6rem;
   width: 100%;
 }
 
 .header__tape {
   width: 80%;
-  margin-top: -2.5rem;
+  margin-top: -1.25rem;
 
   &--top-left {
     animation: moveInTopLeft 3s ease-out;
@@ -38,8 +38,8 @@
 }
 
 .header__title {
-  width: 8rem;
-  height: 9rem;
+  width: 4rem;
+  height: 4.5rem;
   background: url("/images/notebook-page-transparent-small.jpg");
   background-size: cover;
   border-radius: 5px;
@@ -50,8 +50,8 @@
   padding: 0;
   animation: fadeIn 1.5s ease-in;
   position: fixed;
-  top: 1rem;
-  right: calc(20% - 4rem);
+  top: 0.5rem;
+  right: calc(20% - 2rem);
   transition: right 0.4s ease-in, top 0.4s ease-in, transform 0.4s ease-in;
 
   & div {
@@ -66,18 +66,18 @@
 
   &:hover {
     cursor: pointer;
-    transform: translateY(1rem);
+    transform: translateY(0.5rem);
   }
 
   &:nth-of-type(2) {
-    right: calc(40% - 4rem);
+    right: calc(40% - 2rem);
   }
   &:nth-of-type(3) {
-    right: calc(60% - 4rem);
+    right: calc(60% - 2rem);
   }
 
   &:nth-of-type(4) {
-    right: calc(80% - 4rem);
+    right: calc(80% - 2rem);
   }
 
   h3 {
@@ -87,9 +87,9 @@
   }
 
   &_hide {
-    top: 0.5rem;
+    top: 0.25rem;
     position: fixed;
-    right: 0.5rem;
+    right: 0.25rem;
     transform: scale(0.6);
 
     &:hover {
@@ -102,15 +102,15 @@
     &:nth-of-type(2),
     &:nth-of-type(3),
     &:nth-of-type(4) {
-      right: 0.5rem;
+      right: 0.25rem;
     }
   }
 }
 
 .bigger-arrow {
-  font-size: 4rem;
+  font-size: 2rem;
 }
 
 .medium-arrow {
-  font-size: 2rem;
+  font-size: 1rem;
 }
