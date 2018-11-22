@@ -21,6 +21,19 @@ class Introduction extends React.Component {
         .then(data => data.json())
         .then(data => {
           this.setState({ qA: data });
+        })
+        .catch(err => {
+          this.setState({
+            qA: [
+              {
+                question: "Why is there no other options for questions?",
+                answer:
+                  "There was an error retrieving the questions and answers from the database.",
+                search_terms:
+                  "why what where how when do you have questions answers who options other more less"
+              }
+            ]
+          });
         });
     }
   }
@@ -52,16 +65,6 @@ class Introduction extends React.Component {
         >
           <h1 className="paper-header">Chris Ewald</h1>
           <QA qA={this.state.qA} />
-          {/* <textarea
-            className={`paper-text ${this.chromeClass}`}
-            style={{
-              background: "inherit",
-              border: "none",
-              fontFamily: "inherit",
-              height: "15rem"
-            }}
-            placeholder="Get to know me: Click here and type your question"
-          /> */}
 
           <br />
           <p className={`paper-text ${this.chromeClass}`}>
